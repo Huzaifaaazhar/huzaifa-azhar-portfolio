@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem f:\\\\huzaifa-azhar-portfolio | Select-Object Name; \\(Get-Content f:\\\\huzaifa-azhar-portfolio\\\\package.json -Raw\\))",
+      "PowerShell(npm install zod)",
+      "PowerShell(npm ls zod)",
+      "PowerShell(npm run build)"
+    ]
+  }
+}
