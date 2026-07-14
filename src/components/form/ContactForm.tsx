@@ -246,7 +246,7 @@ export function ContactForm() {
       {status.kind === "fallback" && (
         <p role="status" className="text-sm text-ink-dim">
           Your email app should have opened with the message pre-filled — hit
-          send there and I'll get it. If it didn't, email me at{" "}
+          send there and I’ll get it. If it didn’t, email me at{" "}
           <a
             href={`mailto:${site.email}`}
             className="text-aurora-teal underline underline-offset-4"

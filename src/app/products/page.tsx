@@ -106,7 +106,7 @@ export default function ProductsPage() {
         Built, shipped, and doing real work.
       </h1>
       <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-dim">
-        Each of these is a real system — the problem it kills, who it's for,
+        Each of these is a real system — the problem it kills, who it’s for,
         and how it works. If one of them sounds like your problem, the next one
         can be yours.
       </p>
@@ -122,7 +122,7 @@ export default function ProductsPage() {
             Your project — this spot is open.
           </h2>
           <p className="mt-3 max-w-2xl text-ink-dim">
-            Describe the process that eats your team's hours. I'll reply within
+            Describe the process that eats your team’s hours. I’ll reply within
             a business day with what an AI system could take off their plate.
           </p>
           <Link

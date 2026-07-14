@@ -28,13 +28,14 @@ export default function OgImage() {
       >
         <div
           style={{
+            display: "flex",
             fontSize: 26,
             letterSpacing: 6,
             textTransform: "uppercase",
             color: "#3EF0A6",
           }}
         >
-          {site.name} · {site.role}
+          {`${site.name} · ${site.role}`}
         </div>
         <div
           style={{

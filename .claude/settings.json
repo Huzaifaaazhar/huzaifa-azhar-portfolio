@@ -4,7 +4,12 @@
       "PowerShell(Get-ChildItem f:\\\\huzaifa-azhar-portfolio | Select-Object Name; \\(Get-Content f:\\\\huzaifa-azhar-portfolio\\\\package.json -Raw\\))",
       "PowerShell(npm install zod)",
       "PowerShell(npm ls zod)",
-      "PowerShell(npm run build)"
+      "PowerShell(npm run build)",
+      "PowerShell(npm run lint)",
+      "PowerShell(npm start)",
+      "Bash(curl -s http://localhost:3000/products)",
+      "Bash(curl -s http://localhost:3000/sitemap.xml)",
+      "Bash(curl -s http://localhost:3000/)"
     ]
   }
 }

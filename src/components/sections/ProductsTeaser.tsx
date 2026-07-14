@@ -48,7 +48,7 @@ export function ProductsTeaser() {
               Your project — this spot is open.
             </h3>
             <p className="mt-3 text-ink-dim">
-              Tell me what's eating your team's hours and I'll tell you what an
+              Tell me what’s eating your team’s hours and I’ll tell you what an
               AI system could take off their plate.
             </p>
           </div>
