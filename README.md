@@ -5,18 +5,18 @@ convert small-business visitors into contact-form leads, with a signature
 "big-bang → galaxy" WebGL experience layered on top.
 
 **Stack:** Next.js (App Router) · TypeScript · Tailwind v4 · Zod ·
-(later phases) Prisma + Neon Postgres · Resend · React Three Fiber · GSAP + Lenis
+Prisma + Neon Postgres · Resend · React Three Fiber · GSAP + Lenis · MDX
 
 ## Build phases
 
 | Phase | Scope | Status |
 | --- | --- | --- |
 | 1 | Content shell, all sections, `/products`, full SEO | ✅ done |
-| 2 | Contact form → Neon DB + Resend emails | ⬜ |
-| 3 | Motion layer (Lenis, GSAP, split reveals, cursor) | ⬜ |
-| 4 | Living galaxy WebGL background | ⬜ |
-| 5 | Big-bang intro + animated `/products` transition | ⬜ |
-| 6 | Testimonials signature animation + blog (MDX, RSS) | ⬜ |
+| 2 | Contact form → Neon DB + Resend emails | 🟡 code done — needs real Neon/Resend credentials (see below) |
+| 3 | Motion layer (Lenis, GSAP, split reveals, cursor) | ✅ done |
+| 4 | Living galaxy WebGL background | ✅ done |
+| 5 | Big-bang intro + animated `/products` transition | ✅ done |
+| 6 | Testimonials signature animation + blog (MDX, RSS) | ✅ done |
 
 ## Run locally
 
@@ -49,8 +49,10 @@ does anything.
 
 1. Create an account at [neon.tech](https://neon.tech) → **New Project**
    (pick a region near Vercel's, e.g. US East).
-2. Copy the **pooled** connection string from **Connect** into `DATABASE_URL`.
-3. After Phase 2 lands: `npx prisma migrate deploy` runs against it.
+2. Copy the **pooled** connection string from **Connect** into `DATABASE_URL`
+   (in `.env.local`, and in Vercel's env vars for Production/Preview).
+3. Create the `Lead` table: `npx prisma migrate dev --name init` (first time,
+   local) or `npx prisma migrate deploy` (CI/Vercel, no prompts).
 
 ### 3. Resend (transactional email, Phase 2)
 
@@ -85,19 +87,58 @@ Every lead notification also lands at `CONTACT_TO_EMAIL`.
 ## Where things live
 
 ```
-src/app/               routes: / , /products , sitemap, robots, OG image
+src/app/               routes: / , /products , /blog , /blog/[slug] , /api/contact ,
+                       /rss.xml , sitemap, robots, OG image
 src/components/        sections/ (page sections) · form/ · ui/ · JsonLd
 src/data/              products.ts, testimonials.ts — typed content, no CMS
-src/lib/               site.ts (identity/config) · contact.ts (Zod schema) · blog.ts
-content/blog/          MDX posts (Phase 6)
-src/app/globals.css    aurora design tokens — edit colors here
+src/lib/               site.ts (identity/config) · contact.ts (Zod schema) · blog.ts · prisma.ts
+src/generated/prisma/  generated Prisma Client — gitignored, rebuilt by `postinstall`
+prisma/schema.prisma   Lead model (Postgres via Neon)
+content/blog/          MDX posts — frontmatter contract in content/blog/README.md
+src/app/globals.css    aurora design tokens — edit colors here; also themes
+                       @tailwindcss/typography's `prose` for MDX content
+src/components/scene/  Galaxy — WebGL background (Three.js / React Three Fiber)
+src/components/motion/ SmoothScroll (Lenis+GSAP), Reveal, SplitHeading,
+                       PageTransitionOverlay + TransitionLink, BigBangIntro
 ```
 
 - **Edit copy/links:** `src/lib/site.ts` and `src/data/*.ts`.
-- **Edit colors:** the `:root` block in `src/app/globals.css`.
-- **WebGL (Phases 4–5)** will be isolated under `src/components/scene/` and
-  mounts into the fixed `.aurora-backdrop` layer, so content and spectacle
-  never touch.
+- **Edit colors:** the `:root` block in `src/app/globals.css`; the galaxy's
+  particle colors are set separately in `src/components/scene/Galaxy.tsx`.
+- **WebGL** lives under `src/components/scene/` and mounts into the fixed
+  `.aurora-backdrop` layer via `GalaxyBackdrop`, so content and spectacle
+  never touch. It's lazy-loaded client-only (`next/dynamic(..., { ssr: false })`)
+  and skipped entirely under `prefers-reduced-motion` or the Save-Data hint —
+  the CSS aurora gradient alone is the fallback then.
+- **Big-bang intro** (`BigBangIntro`, mounted on `/` only): a one-time flash
+  that fades to reveal the galaxy and hero already animating in underneath.
+  Plays once per browser session (`sessionStorage`), never under
+  `prefers-reduced-motion`.
+- **`/products` page transition** (`TransitionLink` + `PageTransitionOverlay`,
+  the latter mounted once in the root layout so it survives client
+  navigations): a circle scales in from the click point to cover the
+  viewport, `router.push`es underneath, then scales back out on the new
+  route. Used only on links from `/` into `/products`. Under
+  `prefers-reduced-motion` it swaps to a plain opacity fade instead — no
+  positional movement — rather than skipping the transition outright.
+  This uses GSAP, not React's `<ViewTransition>` / Next's experimental
+  `viewTransition` flag: the installed `react` (19.2.4, a fixed pin, not a
+  canary tag) doesn't export `ViewTransition`, so that API isn't actually
+  usable here without an unrequested React version change.
+- **Blog** (`content/blog/*.mdx` → `/blog`, `/blog/[slug]`, `/rss.xml`):
+  frontmatter is Zod-validated in `src/lib/blog.ts`. `draft: true` posts are
+  excluded everywhere — listing, sitemap, RSS, and the homepage "Writing"
+  teaser (which renders nothing while there are zero published posts).
+  `content/blog/example-post.mdx` ships as a draft proving the pipeline
+  works end to end — delete it once there's a real first post.
+- **Testimonials** (`Constellation`, `src/data/testimonials.ts`): each
+  testimonial gets a small decorative star-cluster (seeded deterministically
+  from its `id`, so server/client markup always matches) whose points and
+  connecting lines draw in via GSAP as it scrolls into view; the quote text
+  itself is always plain DOM text, unaffected by the animation. Renders
+  nothing on the homepage while every testimonial is still a placeholder —
+  same policy as Writing. Under `prefers-reduced-motion` the constellation
+  renders fully drawn, no animation.
 
 ## Accessibility & performance ground rules
 

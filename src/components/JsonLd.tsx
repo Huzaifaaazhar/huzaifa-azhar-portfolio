@@ -1,5 +1,6 @@
 import { site } from "@/lib/site";
 import { products, statusLabel, type Product } from "@/data/products";
+import type { PostMeta } from "@/lib/blog";
 
 function JsonLdScript({ data }: { data: object }) {
   return (
@@ -47,6 +48,23 @@ export function PersonJsonLd() {
         sameAs,
       },
     ],
+  };
+  return <JsonLdScript data={data} />;
+}
+
+/** BlogPosting — rendered on each /blog/[slug]. */
+export function BlogPostingJsonLd({ post }: { post: PostMeta }) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    dateModified: post.date,
+    keywords: post.tags.join(", "),
+    url: `${site.url}/blog/${post.slug}`,
+    mainEntityOfPage: `${site.url}/blog/${post.slug}`,
+    author: { "@id": `${site.url}/#person` },
   };
   return <JsonLdScript data={data} />;
 }

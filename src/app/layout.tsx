@@ -5,6 +5,10 @@ import { site } from "@/lib/site";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { PersonJsonLd } from "@/components/JsonLd";
+import { SmoothScroll } from "@/components/motion/SmoothScroll";
+import { Cursor } from "@/components/ui/Cursor";
+import { GalaxyBackdrop } from "@/components/scene/GalaxyBackdrop";
+import { PageTransitionOverlay } from "@/components/motion/PageTransitionOverlay";
 
 const body = Inter({
   variable: "--font-body",
@@ -62,8 +66,13 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        {/* Decorative cosmos layer — the WebGL galaxy mounts here in Phase 4. */}
+        {/* Decorative cosmos layer: static aurora gradient, with the living
+            galaxy layered on top (skipped under reduced-motion/Save-Data). */}
         <div className="aurora-backdrop" aria-hidden="true" />
+        <GalaxyBackdrop />
+        <SmoothScroll />
+        <Cursor />
+        <PageTransitionOverlay />
         <SiteHeader />
         <main id="main" className="flex-1">
           {children}

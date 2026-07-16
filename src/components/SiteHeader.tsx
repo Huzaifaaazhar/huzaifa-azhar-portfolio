@@ -1,7 +1,15 @@
 import Link from "next/link";
 import { nav, site } from "@/lib/site";
+import { liveTestimonials } from "@/data/testimonials";
 
 export function SiteHeader() {
+  // The Testimonials nav link points to a same-page anchor that only
+  // exists once there's at least one real testimonial — same policy as
+  // the section itself, which renders nothing until then.
+  const items = nav.filter(
+    (item) => item.href !== "/#testimonials" || liveTestimonials.length > 0,
+  );
+
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-bg/80 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
@@ -16,7 +24,7 @@ export function SiteHeader() {
         </Link>
         <nav aria-label="Main">
           <ul className="flex items-center gap-5 text-sm sm:gap-7">
-            {nav.map((item) => (
+            {items.map((item) => (
               <li key={item.href} className="hidden sm:block">
                 <Link
                   href={item.href}

@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// A contact-form submission (the site's single conversion path).
+model Lead {
+  id          String   @id @default(cuid())
+  name        String
+  email       String
+  message     String
+  company     String?
+  budget      String?
+  projectType String?
+  createdAt   DateTime @default(now())
+}

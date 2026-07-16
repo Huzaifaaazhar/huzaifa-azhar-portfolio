@@ -3,6 +3,8 @@ import Link from "next/link";
 import { products, statusLabel, type Product } from "@/data/products";
 import { ProductsJsonLd } from "@/components/JsonLd";
 import { site } from "@/lib/site";
+import { SplitHeading } from "@/components/motion/SplitHeading";
+import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -99,17 +101,25 @@ function ProductCase({ product }: { product: Product }) {
 export default function ProductsPage() {
   return (
     <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-      <p className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-aurora-green">
-        Products
-      </p>
-      <h1 className="max-w-3xl font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
+      <Reveal y={12}>
+        <p className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-aurora-green">
+          Products
+        </p>
+      </Reveal>
+      <SplitHeading
+        as="h1"
+        trigger="mount"
+        className="max-w-3xl font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl"
+      >
         Built, shipped, and doing real work.
-      </h1>
-      <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-dim">
-        Each of these is a real system — the problem it kills, who it’s for,
-        and how it works. If one of them sounds like your problem, the next one
-        can be yours.
-      </p>
+      </SplitHeading>
+      <Reveal y={16} delay={0.2}>
+        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-dim">
+          Each of these is a real system — the problem it kills, who it’s for,
+          and how it works. If one of them sounds like your problem, the next
+          one can be yours.
+        </p>
+      </Reveal>
 
       <div className="mt-14 space-y-8">
         {products.map((p) => (

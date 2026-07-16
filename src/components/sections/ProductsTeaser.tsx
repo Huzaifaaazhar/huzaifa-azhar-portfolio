@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { teaserProducts, statusLabel } from "@/data/products";
 import { Section } from "@/components/ui/Section";
+import { TransitionLink } from "@/components/motion/TransitionLink";
 
 export function ProductsTeaser() {
   return (
@@ -11,7 +12,7 @@ export function ProductsTeaser() {
     >
       <div className="grid gap-5 sm:grid-cols-2">
         {teaserProducts.map((p) => (
-          <Link
+          <TransitionLink
             key={p.slug}
             href={`/products#${p.slug}`}
             className="panel group flex flex-col gap-3 p-6 transition-colors hover:border-aurora-teal/50"
@@ -35,7 +36,7 @@ export function ProductsTeaser() {
             <span className="mt-auto pt-2 text-sm text-aurora-teal opacity-0 transition-opacity group-hover:opacity-100">
               Read the case →
             </span>
-          </Link>
+          </TransitionLink>
         ))}
 
         {/* The open slot — a conversion device, not a product. */}
@@ -59,12 +60,12 @@ export function ProductsTeaser() {
       </div>
 
       <div className="mt-10">
-        <Link
+        <TransitionLink
           href="/products"
           className="inline-flex items-center gap-2 rounded-full border border-aurora-teal/40 bg-aurora-teal/10 px-6 py-3 font-medium transition-colors hover:border-aurora-teal hover:bg-aurora-teal/20"
         >
           View all products <span aria-hidden="true">→</span>
-        </Link>
+        </TransitionLink>
       </div>
     </Section>
   );
