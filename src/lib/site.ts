@@ -23,9 +23,8 @@ export const site = {
 } as const;
 
 export const nav = [
+  { label: "About", href: "/#about" },
   { label: "Products", href: "/#products" },
-  { label: "Testimonials", href: "/#testimonials" },
-  { label: "Approach", href: "/#approach" },
   { label: "Writing", href: "/blog" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: `mailto:${site.email}` },
 ] as const;

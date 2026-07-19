@@ -2,24 +2,28 @@
 @plugin "@tailwindcss/typography";
 
 /* ------------------------------------------------------------------ */
-/*  Aurora design tokens — single source of truth for the palette.    */
+/*  Design tokens — single source of truth for the palette.           */
 /*  Tweak colors here; everything (Tailwind utilities included) follows. */
 /* ------------------------------------------------------------------ */
 :root {
-  --bg: #05080f;
-  --bg-2: #0b1220;
-  --bg-3: #101a2e;
+  --bg: #0c0c0c;
+  --bg-2: #141414;
+  --bg-3: #1c1c1c;
 
-  --aurora-green: #3ef0a6;
-  --aurora-teal: #33c7d1;
-  --aurora-blue: #4c7dff;
-  --aurora-violet: #9a6cff;
-  --aurora-pink: #e56ac1;
+  /* Brand accents, drawn from the hero gradient and the contact-button
+     gradient — reused as the site-wide accent tokens everywhere the old
+     aurora palette used to be referenced. */
+  --accent-mist: #bbccd7;
+  --accent-slate: #646973;
+  --accent-magenta: #b600a8;
+  --accent-violet: #7621b0;
+  --accent-rust: #be4c00;
+  --accent-plum: #18011f;
 
-  --text: #eaf2f5;
-  --text-dim: rgba(234, 242, 245, 0.64);
-  --text-faint: rgba(234, 242, 245, 0.42);
-  --line: rgba(234, 242, 245, 0.09);
+  --text: #d7e2ea;
+  --text-dim: rgba(215, 226, 234, 0.72);
+  --text-faint: rgba(215, 226, 234, 0.45);
+  --line: rgba(215, 226, 234, 0.15);
 }
 
 /* Map tokens into Tailwind v4 theme so `bg-bg`, `text-ink`,
@@ -28,35 +32,44 @@
   --color-bg: var(--bg);
   --color-bg-2: var(--bg-2);
   --color-bg-3: var(--bg-3);
-  --color-aurora-green: var(--aurora-green);
-  --color-aurora-teal: var(--aurora-teal);
-  --color-aurora-blue: var(--aurora-blue);
-  --color-aurora-violet: var(--aurora-violet);
-  --color-aurora-pink: var(--aurora-pink);
+  --color-aurora-green: var(--accent-mist);
+  --color-aurora-teal: var(--accent-mist);
+  --color-aurora-blue: var(--accent-violet);
+  --color-aurora-violet: var(--accent-violet);
+  --color-aurora-pink: var(--accent-magenta);
   --color-ink: var(--text);
   --color-ink-dim: var(--text-dim);
   --color-ink-faint: var(--text-faint);
   --color-line: var(--line);
 
-  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-heading), var(--font-body), ui-sans-serif,
-    sans-serif;
+  --font-sans: var(--font-kanit), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-kanit), ui-sans-serif, system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
 }
 
 body {
-  background: var(--bg);
   color: var(--text);
-  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-kanit), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--aurora-teal) 35%, transparent);
+  background: color-mix(in srgb, var(--accent-mist) 35%, transparent);
   color: var(--text);
 }
 
 :focus-visible {
-  outline: 2px solid var(--aurora-teal);
+  outline: 2px solid var(--accent-mist);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -70,115 +83,38 @@ html {
   }
 }
 
-/* ------------------------------------------------------------------ */
-/*  Static aurora backdrop (Phase 1).                                  */
-/*  Replaced/augmented by the WebGL galaxy in Phase 4 — the galaxy     */
-/*  canvas will mount into the same fixed layer, and this gradient     */
-/*  remains the reduced-motion / low-power fallback.                   */
-/* ------------------------------------------------------------------ */
-.aurora-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(
-      55% 42% at 18% 4%,
-      color-mix(in srgb, var(--aurora-green) 13%, transparent),
-      transparent 70%
-    ),
-    radial-gradient(
-      48% 38% at 82% 0%,
-      color-mix(in srgb, var(--aurora-violet) 14%, transparent),
-      transparent 70%
-    ),
-    radial-gradient(
-      60% 45% at 55% 12%,
-      color-mix(in srgb, var(--aurora-blue) 9%, transparent),
-      transparent 72%
-    ),
-    var(--bg);
-}
-
-/* Faint star field via layered box-shadows on two 1px dots —
-   cheap, no image request, invisible to screen readers. */
-.aurora-backdrop::before,
-.aurora-backdrop::after {
-  content: "";
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  border-radius: 50%;
-  background: transparent;
-}
-.aurora-backdrop::before {
-  box-shadow:
-    12vw 18vh 0 0 rgba(234, 242, 245, 0.5),
-    28vw 64vh 0 0 rgba(234, 242, 245, 0.3),
-    41vw 9vh 0 0 rgba(234, 242, 245, 0.45),
-    55vw 41vh 0 0 rgba(234, 242, 245, 0.25),
-    67vw 78vh 0 0 rgba(234, 242, 245, 0.4),
-    74vw 22vh 0 0 rgba(234, 242, 245, 0.5),
-    88vw 55vh 0 0 rgba(234, 242, 245, 0.3),
-    94vw 12vh 0 0 rgba(234, 242, 245, 0.45),
-    7vw 88vh 0 0 rgba(234, 242, 245, 0.3),
-    49vw 93vh 0 0 rgba(234, 242, 245, 0.35);
-}
-.aurora-backdrop::after {
-  width: 1px;
-  height: 1px;
-  box-shadow:
-    5vw 33vh 0 0 rgba(234, 242, 245, 0.35),
-    19vw 51vh 0 0 rgba(234, 242, 245, 0.25),
-    33vw 27vh 0 0 rgba(234, 242, 245, 0.3),
-    46vw 70vh 0 0 rgba(234, 242, 245, 0.2),
-    61vw 15vh 0 0 rgba(234, 242, 245, 0.35),
-    72vw 47vh 0 0 rgba(234, 242, 245, 0.25),
-    83vw 83vh 0 0 rgba(234, 242, 245, 0.3),
-    91vw 36vh 0 0 rgba(234, 242, 245, 0.2),
-    15vw 6vh 0 0 rgba(234, 242, 245, 0.3),
-    38vw 85vh 0 0 rgba(234, 242, 245, 0.25),
-    97vw 68vh 0 0 rgba(234, 242, 245, 0.3),
-    58vw 58vh 0 0 rgba(234, 242, 245, 0.2);
-}
-
-/* Aurora text sweep for accent words in headings. */
-.aurora-text {
-  background: linear-gradient(
-    100deg,
-    var(--aurora-green) 0%,
-    var(--aurora-teal) 40%,
-    var(--aurora-blue) 75%,
-    var(--aurora-violet) 100%
-  );
+/* Gradient text used by every section heading. */
+.hero-heading {
+  background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent;
 }
 
-/* Hairline card used across sections. */
+/* Hairline card used across the blog/products pages. */
 .panel {
   background: color-mix(in srgb, var(--bg-2) 78%, transparent);
   border: 1px solid var(--line);
   border-radius: 0.75rem;
 }
 
-/* Themes @tailwindcss/typography's `prose` to the aurora palette, for MDX
+/* Themes @tailwindcss/typography's `prose` to the site palette, for MDX
    blog content. The site is dark-only, so this overrides the base
    --tw-prose-* vars directly rather than relying on prose-invert. */
 .prose-aurora {
   --tw-prose-body: var(--text-dim);
   --tw-prose-headings: var(--text);
   --tw-prose-lead: var(--text-dim);
-  --tw-prose-links: var(--aurora-teal);
+  --tw-prose-links: var(--accent-mist);
   --tw-prose-bold: var(--text);
   --tw-prose-counters: var(--text-faint);
-  --tw-prose-bullets: var(--aurora-teal);
+  --tw-prose-bullets: var(--accent-mist);
   --tw-prose-hr: var(--line);
   --tw-prose-quotes: var(--text);
-  --tw-prose-quote-borders: var(--aurora-green);
+  --tw-prose-quote-borders: var(--accent-mist);
   --tw-prose-captions: var(--text-faint);
-  --tw-prose-code: var(--aurora-teal);
+  --tw-prose-code: var(--accent-mist);
   --tw-prose-pre-code: var(--text);
   --tw-prose-pre-bg: var(--bg-3);
   --tw-prose-th-borders: var(--line);

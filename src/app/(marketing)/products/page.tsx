@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { products, statusLabel, type Product } from "@/data/products";
 import { ProductsJsonLd } from "@/components/JsonLd";
 import { site } from "@/lib/site";
-import { SplitHeading } from "@/components/motion/SplitHeading";
-import { Reveal } from "@/components/motion/Reveal";
+import { FadeIn } from "@/components/ui/FadeIn";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -101,25 +99,25 @@ function ProductCase({ product }: { product: Product }) {
 export default function ProductsPage() {
   return (
     <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-      <Reveal y={12}>
+      <FadeIn y={12}>
         <p className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-aurora-green">
           Products
         </p>
-      </Reveal>
-      <SplitHeading
+      </FadeIn>
+      <FadeIn
         as="h1"
-        trigger="mount"
+        delay={0.1}
         className="max-w-3xl font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl"
       >
         Built, shipped, and doing real work.
-      </SplitHeading>
-      <Reveal y={16} delay={0.2}>
+      </FadeIn>
+      <FadeIn y={16} delay={0.2}>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-dim">
           Each of these is a real system — the problem it kills, who it’s for,
           and how it works. If one of them sounds like your problem, the next
           one can be yours.
         </p>
-      </Reveal>
+      </FadeIn>
 
       <div className="mt-14 space-y-8">
         {products.map((p) => (
@@ -135,12 +133,12 @@ export default function ProductsPage() {
             Describe the process that eats your team’s hours. I’ll reply within
             a business day with what an AI system could take off their plate.
           </p>
-          <Link
-            href="/#contact"
+          <a
+            href={`mailto:${site.email}`}
             className="mt-6 inline-block rounded-full bg-aurora-green px-6 py-3 font-medium text-bg transition-transform hover:scale-[1.03]"
           >
             Start a project
-          </Link>
+          </a>
         </div>
       </div>
 

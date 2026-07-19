@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllPosts } from "@/lib/blog";
 import { site } from "@/lib/site";
-import { SplitHeading } from "@/components/motion/SplitHeading";
-import { Reveal } from "@/components/motion/Reveal";
+import { FadeIn } from "@/components/ui/FadeIn";
 
 export const metadata: Metadata = {
   title: "Writing",
@@ -25,27 +24,27 @@ export default function BlogPage() {
 
   return (
     <div className="mx-auto max-w-3xl px-5 py-20 sm:px-8 sm:py-28">
-      <Reveal y={12}>
+      <FadeIn y={12}>
         <p className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-aurora-green">
           Writing
         </p>
-      </Reveal>
-      <SplitHeading
+      </FadeIn>
+      <FadeIn
         as="h1"
-        trigger="mount"
+        delay={0.1}
         className="max-w-2xl font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl"
       >
         Notes from building AI systems.
-      </SplitHeading>
+      </FadeIn>
 
       {posts.length === 0 ? (
-        <Reveal y={16} delay={0.2}>
+        <FadeIn y={16} delay={0.2}>
           <p className="mt-10 text-ink-dim">
             Nothing published yet — check back soon.
           </p>
-        </Reveal>
+        </FadeIn>
       ) : (
-        <Reveal delay={0.2}>
+        <FadeIn delay={0.2}>
           <ul className="mt-14 space-y-6">
             {posts.map((post) => (
               <li key={post.slug} className="panel p-6 sm:p-8">
@@ -73,7 +72,7 @@ export default function BlogPage() {
               </li>
             ))}
           </ul>
-        </Reveal>
+        </FadeIn>
       )}
     </div>
   );

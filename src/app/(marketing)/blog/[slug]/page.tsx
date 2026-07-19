@@ -3,8 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
-import { SplitHeading } from "@/components/motion/SplitHeading";
-import { Reveal } from "@/components/motion/Reveal";
+import { FadeIn } from "@/components/ui/FadeIn";
 import { BlogPostingJsonLd } from "@/components/JsonLd";
 
 export function generateStaticParams() {
@@ -54,32 +53,32 @@ export default async function BlogPostPage({
 
   return (
     <article className="mx-auto max-w-3xl px-5 py-20 sm:px-8 sm:py-28">
-      <Reveal y={12}>
+      <FadeIn y={12}>
         <Link
           href="/blog"
           className="font-mono text-xs uppercase tracking-[0.25em] text-aurora-green"
         >
           ← Writing
         </Link>
-      </Reveal>
-      <SplitHeading
+      </FadeIn>
+      <FadeIn
         as="h1"
-        trigger="mount"
+        delay={0.1}
         className="mt-4 max-w-2xl font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl"
       >
         {post.title}
-      </SplitHeading>
-      <Reveal y={16} delay={0.2}>
+      </FadeIn>
+      <FadeIn y={16} delay={0.2}>
         <p className="mt-4 font-mono text-xs uppercase tracking-[0.2em] text-ink-faint">
           {formatDate(post.date)}
         </p>
-      </Reveal>
+      </FadeIn>
 
-      <Reveal delay={0.3}>
+      <FadeIn delay={0.3}>
         <div className="prose prose-aurora mt-10 max-w-none">
           <MDXRemote source={post.content} />
         </div>
-      </Reveal>
+      </FadeIn>
 
       <BlogPostingJsonLd post={post} />
     </article>

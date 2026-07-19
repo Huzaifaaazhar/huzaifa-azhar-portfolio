@@ -5,7 +5,7 @@ export const alt = `${site.name} — ${site.role}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-/** OG card: dark cosmos with aurora glows, real text. Generated at build. */
+/** OG card: dark background with the brand gradient glow, real text. Generated at build. */
 export default function OgImage() {
   return new ImageResponse(
     (
@@ -17,12 +17,12 @@ export default function OgImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          backgroundColor: "#05080F",
+          backgroundColor: "#0C0C0C",
           backgroundImage:
-            "radial-gradient(48% 42% at 15% 0%, rgba(62,240,166,0.22), transparent 70%)," +
-            "radial-gradient(45% 40% at 85% 5%, rgba(154,108,255,0.22), transparent 70%)," +
-            "radial-gradient(55% 45% at 55% 15%, rgba(76,125,255,0.14), transparent 72%)",
-          color: "#EAF2F5",
+            "radial-gradient(48% 42% at 15% 0%, rgba(182,0,168,0.22), transparent 70%)," +
+            "radial-gradient(45% 40% at 85% 5%, rgba(118,33,176,0.22), transparent 70%)," +
+            "radial-gradient(55% 45% at 55% 15%, rgba(190,76,0,0.14), transparent 72%)",
+          color: "#D7E2EA",
           fontFamily: "sans-serif",
         }}
       >
@@ -32,7 +32,7 @@ export default function OgImage() {
             fontSize: 26,
             letterSpacing: 6,
             textTransform: "uppercase",
-            color: "#3EF0A6",
+            color: "#BBCCD7",
           }}
         >
           {`${site.name} · ${site.role}`}
@@ -52,7 +52,7 @@ export default function OgImage() {
           style={{
             marginTop: 28,
             fontSize: 30,
-            color: "rgba(234,242,245,0.64)",
+            color: "rgba(215,226,234,0.64)",
             maxWidth: 900,
           }}
         >
