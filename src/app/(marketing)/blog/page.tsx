@@ -1,78 +1,107 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { getAllPosts } from "@/lib/blog";
+import { getMediumPosts } from "@/lib/medium";
 import { site } from "@/lib/site";
 import { FadeIn } from "@/components/ui/FadeIn";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Writing",
-  description: `Notes on AI systems, automation and shipping for small businesses — from ${site.name}.`,
+  description: `Notes on AI systems, automation and shipping for small businesses — from ${site.name}, on Medium.`,
   alternates: { canonical: "/blog" },
 };
 
 function formatDate(date: string) {
-  return new Date(`${date}T00:00:00Z`).toLocaleDateString("en-US", {
+  const parsed = new Date(date);
+  if (Number.isNaN(parsed.getTime())) return date;
+  return parsed.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
-    timeZone: "UTC",
   });
 }
 
-export default function BlogPage() {
-  const posts = getAllPosts();
+export default async function BlogPage() {
+  const posts = await getMediumPosts();
 
   return (
-    <div className="mx-auto max-w-3xl px-5 py-20 sm:px-8 sm:py-28">
-      <FadeIn y={12}>
-        <p className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-aurora-green">
+    <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-28">
+      <FadeIn>
+        <h1
+          className="hero-heading text-center font-black uppercase leading-none tracking-tight"
+          style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
+        >
           Writing
-        </p>
+        </h1>
       </FadeIn>
-      <FadeIn
-        as="h1"
-        delay={0.1}
-        className="max-w-2xl font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl"
-      >
-        Notes from building AI systems.
+      <FadeIn delay={0.15}>
+        <p className="mx-auto mt-8 max-w-xl text-center leading-relaxed text-[#D7E2EA]/70">
+          Notes on AI systems, automation, and shipping for small businesses —
+          published on{" "}
+          <a
+            href={site.socials.medium}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#D7E2EA] underline underline-offset-4"
+          >
+            Medium
+          </a>
+          .
+        </p>
       </FadeIn>
 
       {posts.length === 0 ? (
-        <FadeIn y={16} delay={0.2}>
-          <p className="mt-10 text-ink-dim">
-            Nothing published yet — check back soon.
+        <FadeIn delay={0.3}>
+          <p className="mt-16 text-center text-[#D7E2EA]/60">
+            Couldn&apos;t load articles right now — read them directly on{" "}
+            <a
+              href={site.socials.medium}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#D7E2EA] underline underline-offset-4"
+            >
+              Medium
+            </a>
+            .
           </p>
         </FadeIn>
       ) : (
-        <FadeIn delay={0.2}>
-          <ul className="mt-14 space-y-6">
-            {posts.map((post) => (
-              <li key={post.slug} className="panel p-6 sm:p-8">
-                <Link href={`/blog/${post.slug}`} className="group">
-                  <p className="font-mono text-xs uppercase tracking-[0.2em] text-ink-faint">
-                    {formatDate(post.date)}
+        <div className="mt-16 grid gap-8 sm:mt-20 sm:grid-cols-2">
+          {posts.map((post, i) => (
+            <FadeIn key={post.link} delay={i * 0.1}>
+              <a
+                href={post.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-full flex-col overflow-hidden rounded-[30px] border-2 border-[#D7E2EA]/20 transition-colors hover:border-[#D7E2EA]"
+              >
+                {post.image && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={post.image}
+                    alt=""
+                    className="h-48 w-full object-cover"
+                    loading="lazy"
+                  />
+                )}
+                <div className="flex flex-1 flex-col gap-3 p-6">
+                  <p className="text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/50">
+                    {formatDate(post.pubDate)}
                   </p>
-                  <h2 className="mt-2 font-display text-xl font-semibold tracking-tight group-hover:text-aurora-teal sm:text-2xl">
+                  <h2 className="text-lg font-medium text-[#D7E2EA] group-hover:opacity-80">
                     {post.title}
                   </h2>
-                  <p className="mt-2 text-ink-dim">{post.description}</p>
-                  {post.tags.length > 0 && (
-                    <ul className="mt-4 flex flex-wrap gap-2" aria-label="Tags">
-                      {post.tags.map((tag) => (
-                        <li
-                          key={tag}
-                          className="rounded bg-bg-3/80 px-2.5 py-1 font-mono text-xs text-ink-dim"
-                        >
-                          {tag}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </FadeIn>
+                  <p className="text-sm leading-relaxed text-[#D7E2EA]/60">
+                    {post.excerpt}
+                  </p>
+                  <span className="mt-auto pt-2 text-sm font-medium uppercase tracking-widest text-[#D7E2EA]">
+                    Read on Medium ↗
+                  </span>
+                </div>
+              </a>
+            </FadeIn>
+          ))}
+        </div>
       )}
     </div>
   );

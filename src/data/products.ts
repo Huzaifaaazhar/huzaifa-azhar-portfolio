@@ -13,6 +13,8 @@ export interface Product {
   slug: string;
   name: string;
   tagline: string;
+  /** The industry or market this system was built for. */
+  industry: string;
   /** What was broken before this existed. */
   problem: string;
   /** Who it's for and why they need it. */
@@ -39,6 +41,7 @@ export const products: Product[] = [
     slug: "document-intelligence-pipeline",
     name: "Document Intelligence Pipeline",
     tagline: "Freight paperwork that files itself.",
+    industry: "Logistics & Freight",
     problem:
       "At HashMove, a logistics SaaS, operations teams were re-typing thousands of shipping documents a day — invoices, bills of lading, packing lists. Manual entry was the bottleneck on every shipment and the main source of data errors.",
     marketFit:
@@ -57,6 +60,7 @@ export const products: Product[] = [
     slug: "rag-support-agents",
     name: "RAG Customer-Support Agents",
     tagline: "Support that answers in seconds, not queues.",
+    industry: "SaaS & Customer Support",
     problem:
       "Support agents were spending most of every ticket hunting through documentation. Average resolution sat around 12 minutes, and answers varied by who happened to pick up the ticket.",
     marketFit:
@@ -72,6 +76,7 @@ export const products: Product[] = [
     slug: "shipment-risk-analyzer",
     name: "Shipment Risk Analyzer",
     tagline: "Know which shipments will go wrong before they do.",
+    industry: "Logistics & Freight",
     problem:
       "Freight teams found out about delays and compliance problems after they happened — when a customer called. Risk lived in scattered signals nobody had time to watch.",
     marketFit:
@@ -86,6 +91,7 @@ export const products: Product[] = [
     slug: "jarvis-voice-assistant",
     name: "Jarvis — Voice Assistant",
     tagline: "A voice agent that answers, triages and acts.",
+    industry: "Small Business & Telephony",
     problem:
       "Small businesses miss calls constantly — and every missed call is a lead that dials the next company on the list. Hiring someone to answer phones around the clock doesn't pencil out.",
     marketFit:
@@ -99,6 +105,7 @@ export const products: Product[] = [
     slug: "rppg-vitals-monitor",
     name: "rPPG Vitals Monitor",
     tagline: "Vital signs from a plain camera.",
+    industry: "Health & Wellness",
     problem:
       "Measuring heart rate normally means contact hardware — cuffs, straps, wearables. That's friction (and cost) anywhere you'd like a quick, contactless reading.",
     marketFit:

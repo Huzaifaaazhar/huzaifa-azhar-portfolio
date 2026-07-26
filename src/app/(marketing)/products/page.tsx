@@ -3,142 +3,139 @@ import { products, statusLabel, type Product } from "@/data/products";
 import { ProductsJsonLd } from "@/components/JsonLd";
 import { site } from "@/lib/site";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { LiveProjectButton } from "@/components/ui/LiveProjectButton";
+import { ContactButton } from "@/components/ui/ContactButton";
 
 export const metadata: Metadata = {
   title: "Products",
-  description: `AI systems built by ${site.name}: document intelligence, RAG support agents, shipment risk analysis, voice assistants — each one a structured case with the problem, the fit and the build.`,
+  description: `AI systems built by ${site.name}: document intelligence, RAG support agents, shipment risk analysis, voice assistants — each one a structured case with the industry, the problem and the solution.`,
   alternates: { canonical: "/products" },
 };
 
-function CaseBlock({ label, children }: { label: string; children: string }) {
+function InfoBlock({ label, children }: { label: string; children: string }) {
   return (
     <div>
-      <h3 className="mb-2 font-mono text-xs uppercase tracking-[0.25em] text-aurora-teal">
+      <h3 className="mb-2 text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/60">
         {label}
       </h3>
-      <p className="leading-relaxed text-ink-dim">{children}</p>
+      <p className="leading-relaxed text-[#D7E2EA]">{children}</p>
     </div>
   );
 }
 
-function ProductCase({ product }: { product: Product }) {
+function ProductCard({ product, index }: { product: Product; index: number }) {
   return (
-    <article
-      id={product.slug}
-      className="panel scroll-mt-24 p-7 sm:p-10"
-      aria-labelledby={`${product.slug}-title`}
-    >
-      <header className="mb-8 flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <h2
-            id={`${product.slug}-title`}
-            className="font-display text-2xl font-semibold tracking-tight sm:text-3xl"
-          >
-            {product.name}
-          </h2>
-          <p className="mt-2 text-lg text-ink-dim">{product.tagline}</p>
-        </div>
-        <span className="shrink-0 rounded-full border border-aurora-green/30 bg-aurora-green/10 px-3 py-1 text-xs text-aurora-green">
-          {statusLabel[product.status]}
-        </span>
-      </header>
-
-      <div className="grid gap-8 md:grid-cols-3">
-        <CaseBlock label="Problem">{product.problem}</CaseBlock>
-        <CaseBlock label="Who it's for">{product.marketFit}</CaseBlock>
-        <CaseBlock label="What it does">{product.solution}</CaseBlock>
-      </div>
-
-      {product.metrics && (
-        <ul className="mt-8 flex flex-wrap gap-3">
-          {product.metrics.map((m) => (
-            <li
-              key={m}
-              className="rounded-full border border-line bg-bg-3/60 px-4 py-1.5 text-sm text-ink"
+    <FadeIn delay={index * 0.1}>
+      <article
+        id={product.slug}
+        className="scroll-mt-24 rounded-[40px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-6 sm:rounded-[50px] sm:p-8 md:rounded-[60px] md:p-10"
+        aria-labelledby={`${product.slug}-title`}
+      >
+        <header className="mb-8 flex flex-wrap items-start justify-between gap-6">
+          <div className="flex items-baseline gap-4 sm:gap-6">
+            <span
+              className="font-black text-[#D7E2EA]"
+              style={{ fontSize: "clamp(2.5rem, 8vw, 100px)" }}
             >
-              {m}
-            </li>
-          ))}
-        </ul>
-      )}
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <div className="flex flex-col gap-1">
+              <span className="text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/60">
+                {product.industry}
+              </span>
+              <h2
+                id={`${product.slug}-title`}
+                className="text-xl font-medium uppercase text-[#D7E2EA] sm:text-2xl md:text-3xl"
+              >
+                {product.name}
+              </h2>
+              <p className="text-[#D7E2EA]/70">{product.tagline}</p>
+            </div>
+          </div>
 
-      <footer className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6">
-        <ul className="flex flex-wrap gap-2" aria-label="Technology">
+          {product.liveUrl ? (
+            <LiveProjectButton href={product.liveUrl} />
+          ) : (
+            <span className="rounded-full border-2 border-[#D7E2EA]/30 px-6 py-2.5 text-sm font-medium uppercase tracking-widest text-[#D7E2EA]/50">
+              {statusLabel[product.status]}
+            </span>
+          )}
+        </header>
+
+        <div className="grid gap-8 md:grid-cols-2">
+          <InfoBlock label="Business problem">{product.problem}</InfoBlock>
+          <InfoBlock label="Solution">{product.solution}</InfoBlock>
+        </div>
+
+        {product.metrics && (
+          <ul className="mt-8 flex flex-wrap gap-3">
+            {product.metrics.map((m) => (
+              <li
+                key={m}
+                className="rounded-full border border-[#D7E2EA]/20 px-4 py-1.5 text-sm text-[#D7E2EA]/80"
+              >
+                {m}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <ul
+          className="mt-6 flex flex-wrap gap-2 border-t border-[#D7E2EA]/15 pt-6"
+          aria-label="Technology"
+        >
           {product.tech.map((t) => (
             <li
               key={t}
-              className="rounded bg-bg-3/80 px-2.5 py-1 font-mono text-xs text-ink-dim"
+              className="rounded-full bg-[#D7E2EA]/10 px-3 py-1 text-xs uppercase tracking-wide text-[#D7E2EA]/70"
             >
               {t}
             </li>
           ))}
         </ul>
-        {product.liveUrl ? (
-          <a
-            href={product.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full bg-aurora-green px-5 py-2 text-sm font-medium text-bg transition-transform hover:scale-[1.03]"
-          >
-            Use it ↗
-          </a>
-        ) : product.status === "in-development" ? (
-          <span className="text-sm text-ink-faint">
-            Public release coming — ask me about early access.
-          </span>
-        ) : (
-          <span className="text-sm text-ink-faint">
-            Running privately inside a business.
-          </span>
-        )}
-      </footer>
-    </article>
+      </article>
+    </FadeIn>
   );
 }
 
 export default function ProductsPage() {
   return (
-    <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-      <FadeIn y={12}>
-        <p className="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-aurora-green">
-          Products
-        </p>
-      </FadeIn>
-      <FadeIn
-        as="h1"
-        delay={0.1}
-        className="max-w-3xl font-display text-4xl font-semibold tracking-tight text-balance sm:text-5xl"
-      >
-        Built, shipped, and doing real work.
-      </FadeIn>
-      <FadeIn y={16} delay={0.2}>
-        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-dim">
-          Each of these is a real system — the problem it kills, who it’s for,
-          and how it works. If one of them sounds like your problem, the next
-          one can be yours.
-        </p>
-      </FadeIn>
-
-      <div className="mt-14 space-y-8">
-        {products.map((p) => (
-          <ProductCase key={p.slug} product={p} />
-        ))}
-
-        {/* Open slot — /products ends on the conversion path. */}
-        <div className="rounded-xl border border-dashed border-aurora-violet/40 bg-aurora-violet/5 p-7 sm:p-10">
-          <h2 className="font-display text-2xl font-semibold tracking-tight">
-            Your project — this spot is open.
-          </h2>
-          <p className="mt-3 max-w-2xl text-ink-dim">
-            Describe the process that eats your team’s hours. I’ll reply within
-            a business day with what an AI system could take off their plate.
-          </p>
-          <a
-            href={`mailto:${site.email}`}
-            className="mt-6 inline-block rounded-full bg-aurora-green px-6 py-3 font-medium text-bg transition-transform hover:scale-[1.03]"
+    <div className="bg-[#0C0C0C] px-5 py-20 sm:px-8 sm:py-28 md:px-10">
+      <div className="mx-auto max-w-6xl">
+        <FadeIn>
+          <h1
+            className="hero-heading text-center font-black uppercase leading-none tracking-tight"
+            style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
           >
-            Start a project
-          </a>
+            Products
+          </h1>
+        </FadeIn>
+        <FadeIn delay={0.15}>
+          <p className="mx-auto mt-8 max-w-2xl text-center leading-relaxed text-[#D7E2EA]/70">
+            Each of these is a real system — the industry it serves, the
+            problem it kills, and how it works. If one of them sounds like
+            your problem, the next one can be yours.
+          </p>
+        </FadeIn>
+
+        <div className="mt-16 flex flex-col gap-8 sm:mt-20 md:mt-24">
+          {products.map((p, i) => (
+            <ProductCard key={p.slug} product={p} index={i} />
+          ))}
+
+          <FadeIn delay={products.length * 0.1}>
+            <div className="flex flex-col items-center gap-6 rounded-[40px] border-2 border-dashed border-[#D7E2EA]/30 p-10 text-center sm:rounded-[50px] md:rounded-[60px]">
+              <h2 className="text-xl font-medium uppercase text-[#D7E2EA] sm:text-2xl">
+                Your project — this spot is open.
+              </h2>
+              <p className="max-w-xl text-[#D7E2EA]/70">
+                Describe the process that eats your team&apos;s hours.
+                I&apos;ll reply within a business day with what an AI system
+                could take off their plate.
+              </p>
+              <ContactButton />
+            </div>
+          </FadeIn>
         </div>
       </div>
 

@@ -16,9 +16,10 @@ export const site = {
   description:
     "Voice agents, document pipelines and automation for operations-heavy businesses — built end-to-end by one engineer.",
   socials: {
-    linkedin: "https://www.linkedin.com/in/huzaifaazhar-3b8b8118b",
+    linkedin: "https://linkedin.com/in/huzaifa-azhar-3b8b8118b",
     github: "https://github.com/Huzaifaaazhar",
     medium: "https://medium.com/@azharhuzaifa123",
+    kaggle: "https://www.kaggle.com/huzaifaazhar05",
   },
 } as const;
 
