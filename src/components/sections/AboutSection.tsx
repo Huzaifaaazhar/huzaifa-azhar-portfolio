@@ -6,7 +6,7 @@ const DECOR_BASE =
   "https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7";
 
 const PARAGRAPH =
-  "With more than three years of experience building production AI systems, i focus on AI agents, voice interfaces, and workflow automation, i truly enjoy working with operations-heavy businesses that want real leverage, not hype. Let's build something incredible together!";
+  "Not just an engineer, i'm an AI consultant, product strategist, and builder. i help companies decide what AI is actually worth building, then design and ship it end-to-end across logistics, healthcare, fintech, and security, skipping the agency overhead and the six-month discovery decks. Let's build something incredible together!";
 
 export function AboutSection() {
   return (

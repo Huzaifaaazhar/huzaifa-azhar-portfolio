@@ -7,14 +7,22 @@
  */
 export const site = {
   name: "Huzaifa Azhar",
-  role: "AI Engineer & Consultant",
+  role: "AI Consultant & Product Builder",
   location: "Karachi, Pakistan",
   hours: "works US-friendly hours",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   email: "azharhuzaifa123@gmail.com",
-  headline: "I build and advise on AI systems that do real work.",
+  headline: "AI that earns its place in your business.",
   description:
-    "Voice agents, document pipelines and automation for operations-heavy businesses — built and advised end-to-end by one AI engineer and consultant.",
+    "AI consultant and product builder. I strategize, design and ship vertical AI products across logistics, healthcare, fintech, CCTV, agriculture and security.",
+  knowsAbout: [
+    "AI agents",
+    "computer vision",
+    "retrieval-augmented generation",
+    "LLM fine-tuning",
+    "workflow automation",
+    "AI compliance",
+  ],
   socials: {
     linkedin: "https://linkedin.com/in/huzaifa-azhar-3b8b8118b",
     github: "https://github.com/Huzaifaaazhar",

@@ -3,33 +3,51 @@ import { FadeIn } from "@/components/ui/FadeIn";
 const SERVICES = [
   {
     number: "01",
-    name: "AI Agents",
+    name: "AI Opportunity Audit",
     description:
-      "Autonomous agents that use your real tools — calendar, inbox, CRM, spreadsheets — to handle tasks end to end, from scheduling to multi-step workflows.",
+      "A structured review of your operations to find where AI creates real ROI — and where it doesn't. You get a ranked shortlist of use cases scored by impact, effort, and risk, so you know what's worth building before you spend a dollar.",
   },
   {
     number: "02",
-    name: "Voice Interfaces",
+    name: "AI Product Strategy & Roadmapping",
     description:
-      "Voice-first assistants with live speech recognition, natural text-to-speech, and function calling, wired into the systems your business already runs on.",
+      "I act as your fractional AI product lead, defining the problem, the buyer, the MVP scope, and the phased build order — turning a model into something customers actually pay for and keep using.",
   },
   {
     number: "03",
-    name: "Document Automation",
+    name: "Custom AI Agent & Automation Development",
     description:
-      "Document intelligence pipelines that read, extract, and reconcile at scale — turning manual data entry and paperwork into automated, reliable throughput.",
+      "Agents that use your real tools — inbox, CRM, calendar, internal APIs — to complete multi-step work end to end, scoped, deployed, and monitored. Autonomous workflows, not another chatbot demo.",
   },
   {
     number: "04",
-    name: "RAG & Support Agents",
+    name: "Computer Vision & Video Intelligence",
     description:
-      "Retrieval-augmented systems and support agents grounded in your own knowledge base, cutting resolution times while keeping answers accurate and on-brand.",
+      "Vision systems that turn cameras and images into decisions — detection, counting, tracking, quality inspection, and anomaly alerts — deployable on your existing CCTV or edge devices.",
   },
   {
     number: "05",
-    name: "Automation & Deployment",
+    name: "Document Intelligence & Data Extraction",
     description:
-      "Designing, shipping, and monitoring production AI — clean architecture, real integrations, and systems that keep working after launch.",
+      "Pipelines that read messy documents — invoices, forms, contracts, shipping paperwork — and turn them into structured, validated data that flows into your systems, killing manual entry and the errors that come with it.",
+  },
+  {
+    number: "06",
+    name: "RAG & Knowledge Systems",
+    description:
+      "Retrieval-augmented assistants grounded in your own policies, docs, and product knowledge, so answers are accurate, current, and traceable to a source — support and internal answers stop being guesswork.",
+  },
+  {
+    number: "07",
+    name: "AI Compliance & Governance Advisory",
+    description:
+      "Help shipping AI that regulators and enterprise buyers will accept — risk assessment, audit trails, evaluation frameworks, and guardrails. In regulated industries, provably safe and documented is the moat.",
+  },
+  {
+    number: "08",
+    name: "Fractional AI Team / Ongoing Partnership",
+    description:
+      "A retained engagement where I'm your on-call AI lead — building, monitoring, iterating, and advising as needs evolve, instead of a one-off project abandoned at launch.",
   },
 ] as const;
 

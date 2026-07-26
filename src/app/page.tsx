@@ -3,6 +3,7 @@ import { MarqueeSection } from "@/components/sections/MarqueeSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
+import { FaqSection } from "@/components/sections/FaqSection";
 import { SiteFooter } from "@/components/SiteFooter";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <AboutSection />
       <ServicesSection />
       <TestimonialsSection />
+      <FaqSection />
       <SiteFooter />
     </>
   );

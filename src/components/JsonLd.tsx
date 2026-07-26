@@ -24,6 +24,7 @@ export function PersonJsonLd() {
         jobTitle: site.role,
         email: `mailto:${site.email}`,
         url: site.url,
+        knowsAbout: site.knowsAbout,
         address: {
           "@type": "PostalAddress",
           addressLocality: "Karachi",
@@ -39,6 +40,7 @@ export function PersonJsonLd() {
         url: site.url,
         email: `mailto:${site.email}`,
         founder: { "@id": `${site.url}/#person` },
+        knowsAbout: site.knowsAbout,
         areaServed: "Worldwide",
         address: {
           "@type": "PostalAddress",
@@ -81,7 +83,7 @@ export function ProductsJsonLd() {
         "@type": "SoftwareApplication",
         name: p.name,
         description: p.solution,
-        url: p.liveUrl ?? `${site.url}/products#${p.slug}`,
+        url: p.liveUrl ?? `${site.url}/products/${p.slug}`,
         applicationCategory: "BusinessApplication",
         creativeWorkStatus: statusLabel[p.status],
         author: { "@id": `${site.url}/#person` },
@@ -91,6 +93,49 @@ export function ProductsJsonLd() {
           priceCurrency: "USD",
           description: "Custom builds — contact for scope and pricing.",
         },
+      },
+    })),
+  };
+  return <JsonLdScript data={data} />;
+}
+
+/** SoftwareApplication — rendered on each /products/[slug] page. */
+export function ProductJsonLd({ product }: { product: Product }) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: product.name,
+    description: product.solution,
+    url: product.liveUrl ?? `${site.url}/products/${product.slug}`,
+    applicationCategory: "BusinessApplication",
+    creativeWorkStatus: statusLabel[product.status],
+    industry: product.industry,
+    author: { "@id": `${site.url}/#person` },
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+      description: "Custom builds — contact for scope and pricing.",
+    },
+  };
+  return <JsonLdScript data={data} />;
+}
+
+/** FAQPage — rendered wherever the FAQ section appears. */
+export function FaqJsonLd({
+  faqs,
+}: {
+  faqs: { question: string; answer: string }[];
+}) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
       },
     })),
   };

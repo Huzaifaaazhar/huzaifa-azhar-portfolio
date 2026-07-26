@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { products, statusLabel, type Product } from "@/data/products";
 import { ProductsJsonLd } from "@/components/JsonLd";
-import { site } from "@/lib/site";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { LiveProjectButton } from "@/components/ui/LiveProjectButton";
 import { ContactButton } from "@/components/ui/ContactButton";
 
 export const metadata: Metadata = {
-  title: "Products",
-  description: `AI systems built by ${site.name}: document intelligence, RAG support agents, shipment risk analysis, voice assistants — grouped by industry, each with the business problem and the solution.`,
+  title: "AI Products by Industry",
+  description:
+    "Vertical AI products across logistics, healthcare, fintech, CCTV, agriculture, IT, compliance, and cybersecurity — each with the business problem and the solution.",
   alternates: { canonical: "/products" },
 };
 
@@ -57,7 +58,9 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
                 id={`${product.slug}-title`}
                 className="text-xl font-medium uppercase text-[#D7E2EA] sm:text-2xl md:text-3xl"
               >
-                {product.name}
+                <Link href={`/products/${product.slug}`} className="hover:opacity-80">
+                  {product.name}
+                </Link>
               </h2>
               <p className="text-[#D7E2EA]/70">{product.tagline}</p>
             </div>
@@ -124,8 +127,8 @@ export default function ProductsPage() {
         </FadeIn>
         <FadeIn delay={0.15}>
           <p className="mx-auto mt-8 max-w-2xl text-center leading-relaxed text-[#D7E2EA]/70">
-            Each of these is a real system, grouped by the industry it
-            serves — the problem it kills, and how it works. If one of them
+            Vertical AI products, grouped by the industry they serve — the
+            business problem each one kills, and how it works. If one of them
             sounds like your problem, the next one can be yours.
           </p>
         </FadeIn>
@@ -138,7 +141,7 @@ export default function ProductsPage() {
                   className="hero-heading font-black uppercase leading-none tracking-tight"
                   style={{ fontSize: "clamp(1.75rem, 6vw, 4rem)" }}
                 >
-                  {group.industry}
+                  AI Products for {group.industry}
                 </h2>
               </FadeIn>
               <div className="flex flex-col gap-8">
