@@ -8,9 +8,22 @@ import { ContactButton } from "@/components/ui/ContactButton";
 
 export const metadata: Metadata = {
   title: "Products",
-  description: `AI systems built by ${site.name}: document intelligence, RAG support agents, shipment risk analysis, voice assistants — each one a structured case with the industry, the problem and the solution.`,
+  description: `AI systems built by ${site.name}: document intelligence, RAG support agents, shipment risk analysis, voice assistants — grouped by industry, each with the business problem and the solution.`,
   alternates: { canonical: "/products" },
 };
+
+function groupByIndustry(items: Product[]) {
+  const groups: { industry: string; products: Product[] }[] = [];
+  for (const product of items) {
+    let group = groups.find((g) => g.industry === product.industry);
+    if (!group) {
+      group = { industry: product.industry, products: [] };
+      groups.push(group);
+    }
+    group.products.push(product);
+  }
+  return groups;
+}
 
 function InfoBlock({ label, children }: { label: string; children: string }) {
   return (
@@ -40,9 +53,6 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
               {String(index + 1).padStart(2, "0")}
             </span>
             <div className="flex flex-col gap-1">
-              <span className="text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/60">
-                {product.industry}
-              </span>
               <h2
                 id={`${product.slug}-title`}
                 className="text-xl font-medium uppercase text-[#D7E2EA] sm:text-2xl md:text-3xl"
@@ -99,6 +109,8 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 }
 
 export default function ProductsPage() {
+  const groups = groupByIndustry(products);
+
   return (
     <div className="bg-[#0C0C0C] px-5 py-20 sm:px-8 sm:py-28 md:px-10">
       <div className="mx-auto max-w-6xl">
@@ -112,18 +124,32 @@ export default function ProductsPage() {
         </FadeIn>
         <FadeIn delay={0.15}>
           <p className="mx-auto mt-8 max-w-2xl text-center leading-relaxed text-[#D7E2EA]/70">
-            Each of these is a real system — the industry it serves, the
-            problem it kills, and how it works. If one of them sounds like
-            your problem, the next one can be yours.
+            Each of these is a real system, grouped by the industry it
+            serves — the problem it kills, and how it works. If one of them
+            sounds like your problem, the next one can be yours.
           </p>
         </FadeIn>
 
-        <div className="mt-16 flex flex-col gap-8 sm:mt-20 md:mt-24">
-          {products.map((p, i) => (
-            <ProductCard key={p.slug} product={p} index={i} />
+        <div className="mt-16 flex flex-col gap-20 sm:mt-20 md:mt-24">
+          {groups.map((group) => (
+            <div key={group.industry} className="flex flex-col gap-8">
+              <FadeIn>
+                <h2
+                  className="hero-heading font-black uppercase leading-none tracking-tight"
+                  style={{ fontSize: "clamp(1.75rem, 6vw, 4rem)" }}
+                >
+                  {group.industry}
+                </h2>
+              </FadeIn>
+              <div className="flex flex-col gap-8">
+                {group.products.map((p, i) => (
+                  <ProductCard key={p.slug} product={p} index={i} />
+                ))}
+              </div>
+            </div>
           ))}
 
-          <FadeIn delay={products.length * 0.1}>
+          <FadeIn>
             <div className="flex flex-col items-center gap-6 rounded-[40px] border-2 border-dashed border-[#D7E2EA]/30 p-10 text-center sm:rounded-[50px] md:rounded-[60px]">
               <h2 className="text-xl font-medium uppercase text-[#D7E2EA] sm:text-2xl">
                 Your project — this spot is open.

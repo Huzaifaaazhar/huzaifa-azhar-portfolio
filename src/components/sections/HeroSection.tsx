@@ -48,7 +48,7 @@ export function HeroSection() {
             className="max-w-[160px] font-light uppercase leading-snug tracking-wide text-[#D7E2EA] sm:max-w-[220px] md:max-w-[260px]"
             style={{ fontSize: "clamp(0.75rem, 1.4vw, 1.5rem)" }}
           >
-            an AI Engineer
+            an AI Engineer &amp; Consultant
           </p>
         </FadeIn>
 

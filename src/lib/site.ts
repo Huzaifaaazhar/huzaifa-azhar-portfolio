@@ -7,14 +7,14 @@
  */
 export const site = {
   name: "Huzaifa Azhar",
-  role: "AI Engineer",
+  role: "AI Engineer & Consultant",
   location: "Karachi, Pakistan",
   hours: "works US-friendly hours",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   email: "azharhuzaifa123@gmail.com",
-  headline: "I build AI systems that do real work.",
+  headline: "I build and advise on AI systems that do real work.",
   description:
-    "Voice agents, document pipelines and automation for operations-heavy businesses — built end-to-end by one engineer.",
+    "Voice agents, document pipelines and automation for operations-heavy businesses — built and advised end-to-end by one AI engineer and consultant.",
   socials: {
     linkedin: "https://linkedin.com/in/huzaifa-azhar-3b8b8118b",
     github: "https://github.com/Huzaifaaazhar",
@@ -25,7 +25,7 @@ export const site = {
 
 export const nav = [
   { label: "About", href: "/#about" },
-  { label: "Products", href: "/#products" },
+  { label: "Products", href: "/products" },
   { label: "Writing", href: "/blog" },
   { label: "Contact", href: `mailto:${site.email}` },
 ] as const;
