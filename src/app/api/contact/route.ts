@@ -3,8 +3,6 @@ import { Resend } from "resend";
 import { contactSchema } from "@/lib/contact";
 import { prisma } from "@/lib/prisma";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: Request) {
   let body: unknown;
   try {
@@ -33,6 +31,7 @@ export async function POST(request: Request) {
   });
 
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
       from: process.env.CONTACT_FROM_EMAIL!,
       to: process.env.CONTACT_TO_EMAIL!,
