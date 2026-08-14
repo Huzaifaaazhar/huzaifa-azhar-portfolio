@@ -14,7 +14,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-[#D7E2EA]/15 bg-[#0C0C0C] px-5 py-10 sm:px-8 md:px-10">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-[#D7E2EA]/60">
+        <p className="font-mono text-sm text-[#D7E2EA]/60">
           © {new Date().getFullYear()} {site.name} · {site.location}
         </p>
         <ul className="flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -23,7 +23,7 @@ export function SiteFooter() {
               <a
                 href={href}
                 {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="flex items-center gap-2 text-sm text-[#D7E2EA]/70 transition-colors hover:text-[#D7E2EA]"
+                className="flex items-center gap-2 font-mono text-sm text-[#D7E2EA]/70 transition-colors hover:text-[#D7E2EA]"
               >
                 <Icon className="h-[18px] w-[18px]" />
                 {label}

@@ -29,7 +29,7 @@ function groupByIndustry(items: Product[]) {
 function InfoBlock({ label, children }: { label: string; children: string }) {
   return (
     <div>
-      <h3 className="mb-2 text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/60">
+      <h3 className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/60">
         {label}
       </h3>
       <p className="leading-relaxed text-[#D7E2EA]">{children}</p>
@@ -69,7 +69,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
           {product.liveUrl ? (
             <LiveProjectButton href={product.liveUrl} />
           ) : (
-            <span className="rounded-full border-2 border-[#D7E2EA]/30 px-6 py-2.5 text-sm font-medium uppercase tracking-widest text-[#D7E2EA]/50">
+            <span className="rounded-full border-2 border-[#D7E2EA]/30 px-6 py-2.5 font-mono text-sm font-medium uppercase tracking-widest text-[#D7E2EA]/50">
               {statusLabel[product.status]}
             </span>
           )}
@@ -85,7 +85,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
             {product.metrics.map((m) => (
               <li
                 key={m}
-                className="rounded-full border border-[#D7E2EA]/20 px-4 py-1.5 text-sm text-[#D7E2EA]/80"
+                className="rounded-full border border-[#D7E2EA]/20 px-4 py-1.5 font-mono text-sm text-[#D7E2EA]/80"
               >
                 {m}
               </li>
@@ -100,7 +100,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
           {product.tech.map((t) => (
             <li
               key={t}
-              className="rounded-full bg-[#D7E2EA]/10 px-3 py-1 text-xs uppercase tracking-wide text-[#D7E2EA]/70"
+              className="rounded-full bg-[#D7E2EA]/10 px-3 py-1 font-mono text-xs uppercase tracking-wide text-[#D7E2EA]/70"
             >
               {t}
             </li>

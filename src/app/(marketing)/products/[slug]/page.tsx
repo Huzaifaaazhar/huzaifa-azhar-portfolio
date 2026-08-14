@@ -47,14 +47,14 @@ export default async function ProductPage({
         <FadeIn>
           <Link
             href="/products"
-            className="text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/60 hover:text-[#D7E2EA]"
+            className="font-mono text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/60 hover:text-[#D7E2EA]"
           >
             ← All products
           </Link>
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <p className="mt-8 text-sm font-medium uppercase tracking-widest text-[#D7E2EA]/60">
+          <p className="mt-8 font-mono text-sm font-medium uppercase tracking-widest text-[#D7E2EA]/60">
             AI for {product.industry}
           </p>
           <h1
@@ -69,19 +69,19 @@ export default async function ProductPage({
         <FadeIn delay={0.2}>
           <div className="mt-12 flex flex-col gap-10">
             <div>
-              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/60">
+              <h2 className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/60">
                 Business problem
               </h2>
               <p className="leading-relaxed text-[#D7E2EA]">{product.problem}</p>
             </div>
             <div>
-              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/60">
+              <h2 className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/60">
                 Who it&apos;s for
               </h2>
               <p className="leading-relaxed text-[#D7E2EA]">{product.marketFit}</p>
             </div>
             <div>
-              <h2 className="mb-2 text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/60">
+              <h2 className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/60">
                 Solution
               </h2>
               <p className="leading-relaxed text-[#D7E2EA]">{product.solution}</p>
@@ -97,7 +97,7 @@ export default async function ProductPage({
             {product.tech.map((t) => (
               <li
                 key={t}
-                className="rounded-full bg-[#D7E2EA]/10 px-3 py-1 text-xs uppercase tracking-wide text-[#D7E2EA]/70"
+                className="rounded-full bg-[#D7E2EA]/10 px-3 py-1 font-mono text-xs uppercase tracking-wide text-[#D7E2EA]/70"
               >
                 {t}
               </li>
@@ -111,7 +111,7 @@ export default async function ProductPage({
               <LiveProjectButton href={product.liveUrl} />
             ) : (
               <div className="flex flex-wrap items-center gap-4">
-                <span className="rounded-full border-2 border-[#D7E2EA]/30 px-6 py-2.5 text-sm font-medium uppercase tracking-widest text-[#D7E2EA]/50">
+                <span className="rounded-full border-2 border-[#D7E2EA]/30 px-6 py-2.5 font-mono text-sm font-medium uppercase tracking-widest text-[#D7E2EA]/50">
                   {statusLabel[product.status]}
                 </span>
                 <ContactButton />

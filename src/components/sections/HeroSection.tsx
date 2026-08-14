@@ -45,7 +45,7 @@ export function HeroSection() {
       <div className="relative z-20 flex items-end justify-between pb-7 sm:pb-8 md:pb-10">
         <FadeIn delay={0.35} y={20} className="px-6 md:px-10">
           <p
-            className="max-w-[160px] font-light uppercase leading-snug tracking-wide text-[#D7E2EA] sm:max-w-[220px] md:max-w-[260px]"
+            className="max-w-[160px] font-mono font-light uppercase leading-snug tracking-wide text-[#D7E2EA] sm:max-w-[220px] md:max-w-[260px]"
             style={{ fontSize: "clamp(0.75rem, 1.4vw, 1.5rem)" }}
           >
             AI Consultant &amp; Product Builder
