@@ -1,34 +1,15 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
+import { useEffect, useRef } from "react";
 
-function Char({
-  char,
-  index,
-  total,
-  progress,
-}: {
-  char: string;
-  index: number;
-  total: number;
-  progress: MotionValue<number>;
-}) {
-  const start = index / total;
-  const end = start + 1 / total;
-  const opacity = useTransform(progress, [start, end], [0.2, 1]);
-
-  return (
-    <span className="relative">
-      <span className="invisible">{char === " " ? " " : char}</span>
-      <motion.span className="absolute left-0 top-0" style={{ opacity }}>
-        {char === " " ? " " : char}
-      </motion.span>
-    </span>
-  );
-}
-
-/** Character-by-character scroll-reveal text animation. */
+/**
+ * Character-by-character scroll-reveal text.
+ *
+ * Every character's opacity is derived in CSS from two custom properties —
+ * `--p` (scroll progress) on the paragraph and a static `--i` (index) per
+ * character. That keeps the whole effect to a single style write per frame
+ * instead of one scroll-linked animation value per character.
+ */
 export function AnimatedText({
   text,
   className,
@@ -37,23 +18,59 @@ export function AnimatedText({
   className?: string;
 }) {
   const ref = useRef<HTMLParagraphElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 0.8", "end 0.2"],
-  });
-
   const chars = Array.from(text);
 
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    let frame = 0;
+
+    function update() {
+      frame = 0;
+      const node = ref.current;
+      if (!node) return;
+
+      const rect = node.getBoundingClientRect();
+      // Runs from just below the fold to just above it, matching the
+      // previous "start 0.8" → "end 0.2" scroll offsets.
+      const start = window.innerHeight * 0.8;
+      const end = window.innerHeight * 0.2;
+      const progress = (start - rect.top) / (start - end + rect.height);
+
+      node.style.setProperty("--p", String(Math.min(1, Math.max(0, progress))));
+    }
+
+    function onScroll() {
+      if (frame) return;
+      frame = window.requestAnimationFrame(update);
+    }
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
-    <p ref={ref} className={className}>
+    <p
+      ref={ref}
+      className={className}
+      style={{ "--n": chars.length } as React.CSSProperties}
+    >
       {chars.map((char, i) => (
-        <Char
+        <span
           key={i}
-          char={char}
-          index={i}
-          total={chars.length}
-          progress={scrollYProgress}
-        />
+          className="animated-char"
+          style={{ "--i": i } as React.CSSProperties}
+        >
+          {char === " " ? " " : char}
+        </span>
       ))}
     </p>
   );

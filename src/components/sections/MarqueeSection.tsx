@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useRef } from "react";
 
 const GIFS = [
   "https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif",
@@ -36,49 +36,67 @@ function triple<T>(arr: T[]): T[] {
 const ROW_1_TILES = triple(ROW_1);
 const ROW_2_TILES = triple(ROW_2);
 
-function MarqueeRow({
-  images,
-  translateX,
-}: {
-  images: string[];
-  translateX: number;
-}) {
-  return (
-    <div
-      className="flex gap-3"
-      style={{ transform: `translateX(${translateX}px)`, willChange: "transform" }}
-    >
-      {images.map((src, i) => (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          key={i}
-          src={src}
-          alt=""
-          loading="lazy"
-          className="h-[270px] w-[420px] shrink-0 rounded-2xl object-cover"
-        />
-      ))}
-    </div>
-  );
-}
+const MarqueeRow = forwardRef<HTMLDivElement, { images: string[] }>(
+  function MarqueeRow({ images }, ref) {
+    return (
+      <div className="flex gap-3" style={{ willChange: "transform" }} ref={ref}>
+        {images.map((src, i) => (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            key={i}
+            src={src}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            className="h-[270px] w-[420px] shrink-0 rounded-2xl object-cover"
+          />
+        ))}
+      </div>
+    );
+  },
+);
 
 export function MarqueeSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [offset, setOffset] = useState(0);
+  const row1Ref = useRef<HTMLDivElement>(null);
+  const row2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    function onScroll() {
+    let frame = 0;
+
+    function update() {
+      frame = 0;
       const section = sectionRef.current;
       if (!section) return;
+
       const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-      const next =
-        (window.scrollY - sectionTop + window.innerHeight) * 0.3;
-      setOffset(next);
+      const offset =
+        (window.scrollY - sectionTop + window.innerHeight) * 0.3 - 200;
+
+      // Written straight to the DOM: re-rendering React on every scroll
+      // event would reconcile every tile in both rows.
+      if (row1Ref.current) {
+        row1Ref.current.style.transform = `translate3d(${offset}px, 0, 0)`;
+      }
+      if (row2Ref.current) {
+        row2Ref.current.style.transform = `translate3d(${-offset}px, 0, 0)`;
+      }
     }
 
-    onScroll();
+    function onScroll() {
+      if (frame) return;
+      frame = window.requestAnimationFrame(update);
+    }
+
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (
@@ -87,8 +105,8 @@ export function MarqueeSection() {
       className="overflow-hidden bg-[#0C0C0C] pb-10 pt-24 sm:pt-32 md:pt-40"
     >
       <div className="flex flex-col gap-3">
-        <MarqueeRow images={ROW_1_TILES} translateX={offset - 200} />
-        <MarqueeRow images={ROW_2_TILES} translateX={-(offset - 200)} />
+        <MarqueeRow ref={row1Ref} images={ROW_1_TILES} />
+        <MarqueeRow ref={row2Ref} images={ROW_2_TILES} />
       </div>
     </section>
   );

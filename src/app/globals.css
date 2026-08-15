@@ -84,6 +84,24 @@ html {
   html {
     scroll-behavior: auto;
   }
+
+  /* Scroll reveals are decoration — never a reason to hide content. */
+  .fade-in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Per-character scroll reveal (see AnimatedText). `--p` is the paragraph's
+   scroll progress, `--i` the character's index, `--n` the character count. */
+.animated-char {
+  opacity: clamp(0.2, calc(var(--p, 1) * var(--n) - var(--i)), 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .animated-char {
+    opacity: 1;
+  }
 }
 
 /* Gradient text used by every section heading. */

@@ -1,9 +1,16 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
-const EASE = [0.25, 0.1, 0.25, 1] as const;
+const EASE = "cubic-bezier(0.25, 0.1, 0.25, 1)";
 
+/**
+ * Reveals its children once they scroll into view.
+ *
+ * Content must never get stuck hidden, so this leans on three fallbacks:
+ * a generous rootMargin, a timeout that reveals regardless if the observer
+ * never fires, and a `fade-in` class that `<noscript>` forces visible.
+ */
 type FadeInProps = {
   children: React.ReactNode;
   className?: string;
@@ -23,34 +30,62 @@ export function FadeIn({
   x = 0,
   y = 30,
 }: FadeInProps) {
-  const initial = { opacity: 0, x, y };
-  const whileInView = { opacity: 1, x: 0, y: 0 };
-  const viewport = { once: true, margin: "50px", amount: 0 } as const;
-  const transition = { duration, delay, ease: EASE };
+  const ref = useRef<HTMLDivElement & HTMLHeadingElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      const timer = window.setTimeout(() => setIsVisible(true), 0);
+      return () => window.clearTimeout(timer);
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px 0px", threshold: 0 },
+    );
+    observer.observe(el);
+
+    // Anything already on screen at mount should reveal immediately, and
+    // a missed observer callback must never leave the section blank.
+    const failsafe = window.setTimeout(() => {
+      setIsVisible(true);
+      observer.disconnect();
+    }, 2000);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(failsafe);
+    };
+  }, []);
+
+  const style: React.CSSProperties = {
+    opacity: isVisible ? 1 : 0,
+    transform: isVisible ? "none" : `translate3d(${x}px, ${y}px, 0)`,
+    transition: `opacity ${duration}s ${EASE} ${delay}s, transform ${duration}s ${EASE} ${delay}s`,
+    willChange: isVisible ? undefined : "opacity, transform",
+  };
+
+  const merged = className ? `fade-in ${className}` : "fade-in";
 
   if (as === "h1") {
     return (
-      <motion.h1
-        className={className}
-        initial={initial}
-        whileInView={whileInView}
-        viewport={viewport}
-        transition={transition}
-      >
+      <h1 ref={ref} className={merged} style={style}>
         {children}
-      </motion.h1>
+      </h1>
     );
   }
 
   return (
-    <motion.div
-      className={className}
-      initial={initial}
-      whileInView={whileInView}
-      viewport={viewport}
-      transition={transition}
-    >
+    <div ref={ref} className={merged} style={style}>
       {children}
-    </motion.div>
+    </div>
   );
 }

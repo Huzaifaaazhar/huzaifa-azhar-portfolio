@@ -84,6 +84,13 @@ export default function RootLayout({
       className={`${kanit.variable} ${playfair.variable} ${jetbrainsMono.variable} ${alexBrush.variable} h-full antialiased`}
       style={{ backgroundColor: "#0C0C0C" }}
     >
+      <head>
+        {/* Scroll reveals start hidden and are un-hidden by JS, so without
+            JS the page would render blank. */}
+        <noscript>
+          <style>{`.fade-in{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
+      </head>
       <body
         className={`${kanit.className} min-h-full`}
         style={{ backgroundColor: "#0C0C0C" }}

@@ -21,7 +21,9 @@ export function HeroSection() {
           delay={0.15}
           y={40}
           as="h1"
-          className="hero-heading mt-6 w-full whitespace-nowrap text-[14vw] font-black uppercase leading-none tracking-tight sm:mt-4 sm:text-[15vw] md:-mt-5 md:text-[16vw] lg:text-[17.5vw]"
+          // "Hi, i'm Huzaifa" on one line is ~7.6x its font size wide, so
+          // anything above ~12.9vw runs off the side at every breakpoint.
+          className="hero-heading mt-6 w-full whitespace-nowrap text-[12vw] font-black uppercase leading-none tracking-tight sm:mt-4 md:-mt-5"
         >
           Hi, i&apos;m Huzaifa
         </FadeIn>
