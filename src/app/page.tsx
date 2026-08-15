@@ -1,5 +1,4 @@
 import { HeroSection } from "@/components/sections/HeroSection";
-import { MarqueeSection } from "@/components/sections/MarqueeSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { PathSection } from "@/components/sections/PathSection";
 import { CertificationsSection } from "@/components/sections/CertificationsSection";
@@ -12,7 +11,6 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <MarqueeSection />
       <AboutSection />
       <PathSection />
       <CertificationsSection />
