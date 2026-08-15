@@ -55,7 +55,7 @@ export function AboutSection() {
         <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16">
           <FadeIn delay={0} y={40}>
             <h2
-              className="hero-heading text-center font-black uppercase leading-none tracking-tight"
+              className="hero-heading text-center leading-none tracking-tight"
               style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
             >
               About me

@@ -33,22 +33,22 @@ export function TestimonialCard({
         className="flex h-full flex-col justify-between rounded-[40px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-8 sm:rounded-[50px] sm:p-12 md:rounded-[60px] md:p-16"
       >
         <span
-          className="hero-heading font-black leading-none"
+          className="hero-heading leading-none"
           style={{ fontSize: "clamp(3rem, 8vw, 100px)" }}
         >
           &ldquo;
         </span>
         <p
-          className="text-[#D7E2EA]"
+          className="font-[family-name:var(--font-serif)] leading-snug text-[#D7E2EA]"
           style={{ fontSize: "clamp(1.1rem, 2.5vw, 2rem)" }}
         >
           {testimonial.quote}
         </p>
         <div className="mt-8 flex flex-col gap-1">
-          <span className="text-lg font-medium uppercase text-[#D7E2EA]">
+          <span className="text-lg font-medium text-[#D7E2EA]">
             {testimonial.author}
           </span>
-          <span className="text-sm uppercase tracking-widest text-[#D7E2EA]/60">
+          <span className="text-sm text-[#D7E2EA]/60">
             {testimonial.role}, {testimonial.company}
           </span>
         </div>

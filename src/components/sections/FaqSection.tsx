@@ -8,7 +8,7 @@ export function FaqSection() {
       <div className="mx-auto max-w-3xl">
         <FadeIn>
           <h2
-            className="hero-heading text-center font-black uppercase leading-none tracking-tight"
+            className="hero-heading text-center leading-none tracking-tight"
             style={{ fontSize: "clamp(2.5rem, 9vw, 100px)" }}
           >
             FAQ

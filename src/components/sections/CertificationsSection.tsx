@@ -11,12 +11,12 @@ export function CertificationsSection() {
         <FadeIn>
           <div className="flex flex-wrap items-baseline justify-between gap-4">
             <h2
-              className="hero-heading font-black uppercase leading-none tracking-tight"
+              className="hero-heading leading-none tracking-tight"
               style={{ fontSize: "clamp(2.5rem, 9vw, 100px)" }}
             >
               Certifications
             </h2>
-            <span className="font-mono text-sm uppercase tracking-widest text-[#D7E2EA]/50">
+            <span className="font-mono text-sm text-[#D7E2EA]/50">
               {certifications.length} certificates
             </span>
           </div>
@@ -42,7 +42,7 @@ export function CertificationsSection() {
                     </h3>
                     <p className="text-sm text-[#D7E2EA]/60">{cert.issuer}</p>
                   </div>
-                  <span className="font-mono text-xs uppercase tracking-widest text-[#D7E2EA]/50">
+                  <span className="font-mono text-xs text-[#D7E2EA]/50">
                     {cert.date}
                   </span>
                 </div>

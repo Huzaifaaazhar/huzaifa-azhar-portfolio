@@ -1,13 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Kanit, Playfair_Display, JetBrains_Mono, Alex_Brush } from "next/font/google";
+import { Inter, Playfair_Display, JetBrains_Mono, Alex_Brush } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { PersonJsonLd } from "@/components/JsonLd";
 
-const kanit = Kanit({
-  variable: "--font-kanit",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -81,7 +81,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${kanit.variable} ${playfair.variable} ${jetbrainsMono.variable} ${alexBrush.variable} h-full antialiased`}
+      className={`${inter.variable} ${playfair.variable} ${jetbrainsMono.variable} ${alexBrush.variable} h-full antialiased`}
       style={{ backgroundColor: "#0C0C0C" }}
     >
       <head>
@@ -92,7 +92,7 @@ export default function RootLayout({
         </noscript>
       </head>
       <body
-        className={`${kanit.className} min-h-full`}
+        className={`${inter.className} min-h-full`}
         style={{ backgroundColor: "#0C0C0C" }}
       >
         <a

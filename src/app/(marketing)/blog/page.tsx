@@ -28,7 +28,7 @@ export default async function BlogPage() {
     <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-28">
       <FadeIn>
         <h1
-          className="hero-heading text-center font-black uppercase leading-none tracking-tight"
+          className="hero-heading text-center leading-none tracking-tight"
           style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
         >
           Writing
@@ -85,7 +85,7 @@ export default async function BlogPage() {
                   />
                 )}
                 <div className="flex flex-1 flex-col gap-3 p-6">
-                  <p className="text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/50">
+                  <p className="font-mono text-xs text-[#D7E2EA]/50">
                     {formatDate(post.pubDate)}
                   </p>
                   <h2 className="text-lg font-medium text-[#D7E2EA] group-hover:opacity-80">
@@ -94,7 +94,7 @@ export default async function BlogPage() {
                   <p className="text-sm leading-relaxed text-[#D7E2EA]/60">
                     {post.excerpt}
                   </p>
-                  <span className="mt-auto pt-2 text-sm font-medium uppercase tracking-widest text-[#D7E2EA]">
+                  <span className="mt-auto pt-2 font-mono text-sm text-[#D7E2EA]">
                     Read on Medium ↗
                   </span>
                 </div>

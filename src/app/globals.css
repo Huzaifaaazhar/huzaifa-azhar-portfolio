@@ -42,8 +42,8 @@
   --color-ink-faint: var(--text-faint);
   --color-line: var(--line);
 
-  --font-sans: var(--font-kanit), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-kanit), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-playfair), Georgia, serif;
   --font-serif: var(--font-playfair), Georgia, serif;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
   --font-script: var(--font-alexbrush), cursive;
@@ -62,7 +62,7 @@ body {
 
 body {
   color: var(--text);
-  font-family: var(--font-kanit), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -104,14 +104,24 @@ html {
   }
 }
 
-/* Gradient text used by every section heading. */
+/* Section headings: high-contrast serif at regular weight, sentence case —
+   the display voice of the site. Weight and casing live here so individual
+   sections don't re-declare them. */
 .hero-heading {
   font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 400;
+  text-transform: none;
   background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+}
+
+/* Small meta labels — dates, counters, eyebrows — are monospace. */
+.meta-label {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+  color: var(--text-faint);
 }
 
 /* Hairline card used across the blog/products pages. */

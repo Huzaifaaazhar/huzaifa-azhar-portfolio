@@ -21,9 +21,11 @@ export function HeroSection() {
           delay={0.15}
           y={40}
           as="h1"
-          // "Hi, i'm Huzaifa" on one line is ~7.6x its font size wide, so
-          // anything above ~12.9vw runs off the side at every breakpoint.
-          className="hero-heading mt-6 w-full whitespace-nowrap text-[12vw] font-black uppercase leading-none tracking-tight sm:mt-4 md:-mt-5"
+          // Set on one line, so the size is bounded by the string's width:
+          // at 15vw it fills ~93% of the viewport at every breakpoint,
+          // leaving margin for the Georgia fallback. Raising this much
+          // further runs the text off the side.
+          className="hero-heading mt-6 w-full whitespace-nowrap text-[15vw] leading-none tracking-tight sm:mt-4 md:-mt-5"
         >
           Hi, i&apos;m Huzaifa
         </FadeIn>

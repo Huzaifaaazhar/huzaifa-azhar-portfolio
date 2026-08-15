@@ -58,7 +58,7 @@ export default async function ProductPage({
             AI for {product.industry}
           </p>
           <h1
-            className="hero-heading mt-2 font-black uppercase leading-none tracking-tight"
+            className="hero-heading mt-2 leading-none tracking-tight"
             style={{ fontSize: "clamp(2rem, 8vw, 4.5rem)" }}
           >
             {product.name}

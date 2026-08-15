@@ -56,7 +56,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
             <div className="flex flex-col gap-1">
               <h2
                 id={`${product.slug}-title`}
-                className="text-xl font-medium uppercase text-[#D7E2EA] sm:text-2xl md:text-3xl"
+                className="text-xl font-semibold text-[#D7E2EA] sm:text-2xl md:text-3xl"
               >
                 <Link href={`/products/${product.slug}`} className="hover:opacity-80">
                   {product.name}
@@ -119,7 +119,7 @@ export default function ProductsPage() {
       <div className="mx-auto max-w-6xl">
         <FadeIn>
           <h1
-            className="hero-heading text-center font-black uppercase leading-none tracking-tight"
+            className="hero-heading text-center leading-none tracking-tight"
             style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
           >
             Products
@@ -138,7 +138,7 @@ export default function ProductsPage() {
             <div key={group.industry} className="flex flex-col gap-8">
               <FadeIn>
                 <h2
-                  className="hero-heading font-black uppercase leading-none tracking-tight"
+                  className="hero-heading leading-none tracking-tight"
                   style={{ fontSize: "clamp(1.75rem, 6vw, 4rem)" }}
                 >
                   AI Products for {group.industry}
@@ -154,7 +154,7 @@ export default function ProductsPage() {
 
           <FadeIn>
             <div className="flex flex-col items-center gap-6 rounded-[40px] border-2 border-dashed border-[#D7E2EA]/30 p-10 text-center sm:rounded-[50px] md:rounded-[60px]">
-              <h2 className="text-xl font-medium uppercase text-[#D7E2EA] sm:text-2xl">
+              <h2 className="text-xl font-semibold text-[#D7E2EA] sm:text-2xl">
                 Your project — this spot is open.
               </h2>
               <p className="max-w-xl text-[#D7E2EA]/70">

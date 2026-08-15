@@ -11,7 +11,7 @@ export function TestimonialsSection() {
       style={{ zIndex: 10, position: "relative" }}
     >
       <h2
-        className="hero-heading mb-16 text-center font-black uppercase leading-none tracking-tight sm:mb-20 md:mb-28"
+        className="hero-heading mb-16 text-center leading-none tracking-tight sm:mb-20 md:mb-28"
         style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
       >
         Testimonials

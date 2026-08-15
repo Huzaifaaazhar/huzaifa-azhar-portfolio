@@ -7,7 +7,7 @@ export function PathSection() {
       <div className="mx-auto max-w-4xl">
         <FadeIn>
           <h2
-            className="hero-heading text-center font-black uppercase leading-none tracking-tight"
+            className="hero-heading text-center leading-none tracking-tight"
             style={{ fontSize: "clamp(2.5rem, 9vw, 100px)" }}
           >
             Path
@@ -22,11 +22,11 @@ export function PathSection() {
                   <h3 className="text-xl font-medium text-[#D7E2EA] sm:text-2xl">
                     {entry.role} <span className="text-[#D7E2EA]/50">— {entry.company}</span>
                   </h3>
-                  <span className="font-mono text-xs uppercase tracking-widest text-[#D7E2EA]/50">
+                  <span className="font-mono text-xs text-[#D7E2EA]/50">
                     {entry.period}
                   </span>
                 </div>
-                <p className="mt-1 font-mono text-xs uppercase tracking-widest text-[#D7E2EA]/40">
+                <p className="mt-1 font-mono text-xs text-[#D7E2EA]/40">
                   {entry.location}
                 </p>
                 <ul className="mt-4 flex flex-col gap-2">
@@ -42,7 +42,7 @@ export function PathSection() {
         </div>
 
         <FadeIn delay={experience.length * 0.1}>
-          <h3 className="mt-20 font-mono text-xs uppercase tracking-widest text-[#D7E2EA]/50 sm:mt-24">
+          <h3 className="mt-20 font-mono text-xs text-[#D7E2EA]/50 sm:mt-24">
             Education
           </h3>
         </FadeIn>
@@ -54,7 +54,7 @@ export function PathSection() {
                   <h3 className="text-xl font-medium text-[#D7E2EA] sm:text-2xl">
                     {entry.degree} <span className="text-[#D7E2EA]/50">— {entry.school}</span>
                   </h3>
-                  <span className="font-mono text-xs uppercase tracking-widest text-[#D7E2EA]/50">
+                  <span className="font-mono text-xs text-[#D7E2EA]/50">
                     {entry.period}
                   </span>
                 </div>

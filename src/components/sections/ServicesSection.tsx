@@ -58,7 +58,7 @@ export function ServicesSection() {
       className="rounded-t-[40px] bg-white px-5 py-20 sm:rounded-t-[50px] sm:px-8 sm:py-24 md:rounded-t-[60px] md:px-10 md:py-32"
     >
       <h2
-        className="mb-16 text-center font-serif font-black uppercase text-[#0C0C0C] sm:mb-20 md:mb-28"
+        className="mb-16 text-center font-serif text-[#0C0C0C] sm:mb-20 md:mb-28"
         style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
       >
         Services
@@ -82,7 +82,7 @@ export function ServicesSection() {
               </span>
               <div className="flex flex-col gap-2">
                 <h3
-                  className="font-medium uppercase text-[#0C0C0C]"
+                  className="font-semibold text-[#0C0C0C]"
                   style={{ fontSize: "clamp(1rem, 2.2vw, 2.1rem)" }}
                 >
                   {service.name}
