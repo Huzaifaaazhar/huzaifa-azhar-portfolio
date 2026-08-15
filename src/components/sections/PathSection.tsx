@@ -29,13 +29,15 @@ export function PathSection() {
                 <p className="mt-1 font-mono text-xs text-[#D7E2EA]/40">
                   {entry.location}
                 </p>
-                <ul className="mt-4 flex flex-col gap-2">
-                  {entry.highlights.map((h) => (
-                    <li key={h} className="leading-relaxed text-[#D7E2EA]/70">
-                      {h}
-                    </li>
-                  ))}
-                </ul>
+                {entry.highlights.length > 0 && (
+                  <ul className="mt-4 flex flex-col gap-2">
+                    {entry.highlights.map((h) => (
+                      <li key={h} className="leading-relaxed text-[#D7E2EA]/70">
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </FadeIn>
           ))}
@@ -58,13 +60,15 @@ export function PathSection() {
                     {entry.period}
                   </span>
                 </div>
-                <ul className="mt-4 flex flex-col gap-2">
-                  {entry.highlights.map((h) => (
-                    <li key={h} className="leading-relaxed text-[#D7E2EA]/70">
-                      {h}
-                    </li>
-                  ))}
-                </ul>
+                {entry.highlights.length > 0 && (
+                  <ul className="mt-4 flex flex-col gap-2">
+                    {entry.highlights.map((h) => (
+                      <li key={h} className="leading-relaxed text-[#D7E2EA]/70">
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </FadeIn>
           ))}

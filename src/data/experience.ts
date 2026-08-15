@@ -54,6 +54,12 @@ export interface EducationEntry {
 
 export const education: EducationEntry[] = [
   {
+    school: "FAST NUCES",
+    degree: "MS Data Science",
+    period: "Aug 2026 – Present",
+    highlights: [],
+  },
+  {
     school: "Karachi University, UBIT",
     degree: "BS Software Engineering",
     period: "Feb 2021 – Dec 2024",
