@@ -26,13 +26,18 @@ export function CertificationsSection() {
           {certifications.map((cert, i) => (
             <FadeIn key={cert.title} delay={i * 0.1}>
               <div className="flex flex-col gap-5">
-                <div className="overflow-hidden rounded-2xl border border-[#D7E2EA]/20 bg-[#141414]">
+                <div
+                  className={`overflow-hidden rounded-2xl border border-[#D7E2EA]/20 bg-[#141414] ${
+                    cert.kind === "badge" ? "flex justify-center px-6 py-10" : ""
+                  }`}
+                >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={cert.image}
-                    alt={`${cert.title} certificate`}
+                    alt={`${cert.title} ${cert.kind === "badge" ? "badge" : "certificate"}`}
                     loading="lazy"
-                    className="w-full"
+                    decoding="async"
+                    className={cert.kind === "badge" ? "w-full max-w-[280px]" : "w-full"}
                   />
                 </div>
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
