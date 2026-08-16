@@ -7,7 +7,7 @@ export function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="-mt-10 rounded-t-[40px] bg-[#0C0C0C] px-5 py-20 sm:-mt-12 sm:rounded-t-[50px] sm:px-8 md:-mt-14 md:rounded-t-[60px] md:px-10"
+      className="px-5 py-20 sm:px-8 md:px-10"
       style={{ zIndex: 10, position: "relative" }}
     >
       <h2

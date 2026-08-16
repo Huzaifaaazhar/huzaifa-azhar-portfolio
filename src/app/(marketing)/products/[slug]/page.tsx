@@ -42,19 +42,19 @@ export default async function ProductPage({
   if (!product) notFound();
 
   return (
-    <div className="bg-[#0C0C0C] px-5 py-20 sm:px-8 sm:py-28 md:px-10">
+    <div className="px-5 py-20 sm:px-8 sm:py-28 md:px-10">
       <div className="mx-auto max-w-3xl">
         <FadeIn>
           <Link
             href="/products"
-            className="font-mono text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/60 hover:text-[#D7E2EA]"
+            className="font-mono text-xs font-medium uppercase tracking-widest text-[#7B928D] hover:text-[#EDF3F1]"
           >
             ← All products
           </Link>
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <p className="mt-8 font-mono text-sm font-medium uppercase tracking-widest text-[#D7E2EA]/60">
+          <p className="mt-8 font-mono text-sm font-medium uppercase tracking-widest text-[#7B928D]">
             AI for {product.industry}
           </p>
           <h1
@@ -63,41 +63,41 @@ export default async function ProductPage({
           >
             {product.name}
           </h1>
-          <p className="mt-4 text-lg text-[#D7E2EA]/70">{product.tagline}</p>
+          <p className="mt-4 text-lg text-[#7B928D]">{product.tagline}</p>
         </FadeIn>
 
         <FadeIn delay={0.2}>
           <div className="mt-12 flex flex-col gap-10">
             <div>
-              <h2 className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/60">
+              <h2 className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-[#7B928D]">
                 Business problem
               </h2>
-              <p className="leading-relaxed text-[#D7E2EA]">{product.problem}</p>
+              <p className="leading-relaxed text-[#EDF3F1]">{product.problem}</p>
             </div>
             <div>
-              <h2 className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/60">
+              <h2 className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-[#7B928D]">
                 Who it&apos;s for
               </h2>
-              <p className="leading-relaxed text-[#D7E2EA]">{product.marketFit}</p>
+              <p className="leading-relaxed text-[#EDF3F1]">{product.marketFit}</p>
             </div>
             <div>
-              <h2 className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-[#D7E2EA]/60">
+              <h2 className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-[#7B928D]">
                 Solution
               </h2>
-              <p className="leading-relaxed text-[#D7E2EA]">{product.solution}</p>
+              <p className="leading-relaxed text-[#EDF3F1]">{product.solution}</p>
             </div>
           </div>
         </FadeIn>
 
         <FadeIn delay={0.3}>
           <ul
-            className="mt-8 flex flex-wrap gap-2 border-t border-[#D7E2EA]/15 pt-8"
+            className="mt-8 flex flex-wrap gap-2 border-t border-[#1A2A28] pt-8"
             aria-label="Technology"
           >
             {product.tech.map((t) => (
               <li
                 key={t}
-                className="rounded-full bg-[#D7E2EA]/10 px-3 py-1 font-mono text-xs uppercase tracking-wide text-[#D7E2EA]/70"
+                className="rounded-full bg-[#152423] px-3 py-1 font-mono text-xs uppercase tracking-wide text-[#7B928D]"
               >
                 {t}
               </li>
@@ -111,7 +111,7 @@ export default async function ProductPage({
               <LiveProjectButton href={product.liveUrl} />
             ) : (
               <div className="flex flex-wrap items-center gap-4">
-                <span className="rounded-full border-2 border-[#D7E2EA]/30 px-6 py-2.5 font-mono text-sm font-medium uppercase tracking-widest text-[#D7E2EA]/50">
+                <span className="rounded-full border-2 border-[#1A2A28] px-6 py-2.5 font-mono text-sm font-medium uppercase tracking-widest text-[#4C5F5B]">
                   {statusLabel[product.status]}
                 </span>
                 <ContactButton />

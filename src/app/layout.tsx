@@ -69,7 +69,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0C0C0C",
+  themeColor: "#07090A",
   colorScheme: "dark",
 };
 
@@ -82,7 +82,6 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${playfair.variable} ${jetbrainsMono.variable} ${alexBrush.variable} h-full antialiased`}
-      style={{ backgroundColor: "#0C0C0C" }}
     >
       <head>
         {/* Scroll reveals start hidden and are un-hidden by JS, so without
@@ -92,16 +91,16 @@ export default function RootLayout({
         </noscript>
       </head>
       <body
-        className={`${inter.className} min-h-full`}
-        style={{ backgroundColor: "#0C0C0C" }}
+        className={`${inter.className} relative min-h-full`}
       >
+        <div className="page-glow" aria-hidden="true" />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded focus:bg-bg-2 focus:px-4 focus:py-2"
         >
           Skip to content
         </a>
-        <main id="main" style={{ overflowX: "clip" }}>
+        <main id="main" className="relative z-10" style={{ overflowX: "clip" }}>
           {children}
         </main>
         <PersonJsonLd />

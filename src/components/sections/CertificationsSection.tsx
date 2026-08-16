@@ -5,7 +5,7 @@ export function CertificationsSection() {
   return (
     <section
       id="certifications"
-      className="bg-[#0C0C0C] px-5 py-20 sm:px-8 md:px-10"
+      className="px-5 py-20 sm:px-8 md:px-10"
     >
       <div className="mx-auto max-w-3xl">
         <FadeIn>
@@ -16,7 +16,7 @@ export function CertificationsSection() {
             >
               Certifications
             </h2>
-            <span className="font-mono text-sm text-[#D7E2EA]/50">
+            <span className="font-mono text-sm text-[#4C5F5B]">
               {certifications.length} certificates
             </span>
           </div>
@@ -27,7 +27,7 @@ export function CertificationsSection() {
             <FadeIn key={cert.title} delay={i * 0.1}>
               <div className="flex flex-col gap-5">
                 <div
-                  className={`overflow-hidden rounded-2xl border border-[#D7E2EA]/20 bg-[#141414] ${
+                  className={`overflow-hidden rounded-2xl border border-[#1A2A28] bg-[#101B1A] ${
                     cert.kind === "badge" ? "flex justify-center px-6 py-10" : ""
                   }`}
                 >
@@ -42,12 +42,12 @@ export function CertificationsSection() {
                 </div>
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <div className="flex flex-col gap-1">
-                    <h3 className="text-lg font-medium text-[#D7E2EA] sm:text-xl">
+                    <h3 className="text-lg font-medium text-[#EDF3F1] sm:text-xl">
                       {cert.title}
                     </h3>
-                    <p className="text-sm text-[#D7E2EA]/60">{cert.issuer}</p>
+                    <p className="text-sm text-[#7B928D]">{cert.issuer}</p>
                   </div>
-                  <span className="font-mono text-xs text-[#D7E2EA]/50">
+                  <span className="font-mono text-xs text-[#4C5F5B]">
                     {cert.date}
                   </span>
                 </div>

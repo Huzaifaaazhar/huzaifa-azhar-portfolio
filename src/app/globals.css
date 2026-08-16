@@ -6,24 +6,29 @@
 /*  Tweak colors here; everything (Tailwind utilities included) follows. */
 /* ------------------------------------------------------------------ */
 :root {
-  --bg: #0c0c0c;
-  --bg-2: #141414;
-  --bg-3: #1c1c1c;
+  /* Page gradient: near-black at the top easing into deep teal, with the
+     bloom bleeding down from the very top of the document only. */
+  --bg-top: #07090a;
+  --bg-mid: #0c1616;
+  --bg-bottom: #0f1d1d;
+  --glow: #1b4440;
 
-  /* Brand accents, drawn from the hero gradient and the contact-button
-     gradient — reused as the site-wide accent tokens everywhere the old
-     aurora palette used to be referenced. */
-  --accent-mist: #bbccd7;
-  --accent-slate: #646973;
-  --accent-magenta: #b600a8;
-  --accent-violet: #7621b0;
-  --accent-rust: #be4c00;
-  --accent-plum: #18011f;
+  /* `--bg` stays the flat fallback for anything that needs one solid
+     colour (theme-color, OG image, a surface that must be opaque). */
+  --bg: #07090a;
+  --bg-2: #101b1a;
+  --bg-3: #142322;
 
-  --text: #d7e2ea;
-  --text-dim: rgba(215, 226, 234, 0.72);
-  --text-faint: rgba(215, 226, 234, 0.45);
-  --line: rgba(215, 226, 234, 0.15);
+  --text: #edf3f1;
+  --text-dim: #7b928d;
+  --text-faint: #4c5f5b;
+
+  --surface: #101b1a;
+  --line: #1a2a28;
+
+  /* Reserved for small high-signal moments — links, the email address,
+     active states. Never large fills. */
+  --accent: #82cfc0;
 }
 
 /* Map tokens into Tailwind v4 theme so `bg-bg`, `text-ink`,
@@ -32,11 +37,8 @@
   --color-bg: var(--bg);
   --color-bg-2: var(--bg-2);
   --color-bg-3: var(--bg-3);
-  --color-aurora-green: var(--accent-mist);
-  --color-aurora-teal: var(--accent-mist);
-  --color-aurora-blue: var(--accent-violet);
-  --color-aurora-violet: var(--accent-violet);
-  --color-aurora-pink: var(--accent-magenta);
+  --color-accent: var(--accent);
+  --color-surface: var(--surface);
   --color-ink: var(--text);
   --color-ink-dim: var(--text-dim);
   --color-ink-faint: var(--text-faint);
@@ -57,22 +59,48 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: var(--bg);
 }
 
+html {
+  background: var(--bg-top);
+}
+
+/* The linear wash spans the whole document; the bloom is a separate
+   layer pinned to the top of the page (see .page-glow). */
 body {
   color: var(--text);
   font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  background: linear-gradient(
+    180deg,
+    var(--bg-top) 0%,
+    var(--bg-mid) 50%,
+    var(--bg-bottom) 100%
+  );
+}
+
+/* Radial bloom, anchored to the top of the document so it bleeds down
+   from the hero and nowhere else. */
+.page-glow {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: min(1100px, 130vh);
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    120% 70% at 50% -8%,
+    var(--glow) 0%,
+    transparent 42%
+  );
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--accent-mist) 35%, transparent);
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
   color: var(--text);
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent-mist);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -111,7 +139,7 @@ html {
   font-family: var(--font-playfair), Georgia, serif;
   font-weight: 400;
   text-transform: none;
-  background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
+  background: linear-gradient(180deg, var(--text-dim) 0%, var(--text) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -138,15 +166,15 @@ html {
   --tw-prose-body: var(--text-dim);
   --tw-prose-headings: var(--text);
   --tw-prose-lead: var(--text-dim);
-  --tw-prose-links: var(--accent-mist);
+  --tw-prose-links: var(--accent);
   --tw-prose-bold: var(--text);
   --tw-prose-counters: var(--text-faint);
-  --tw-prose-bullets: var(--accent-mist);
+  --tw-prose-bullets: var(--accent);
   --tw-prose-hr: var(--line);
   --tw-prose-quotes: var(--text);
-  --tw-prose-quote-borders: var(--accent-mist);
+  --tw-prose-quote-borders: var(--accent);
   --tw-prose-captions: var(--text-faint);
-  --tw-prose-code: var(--accent-mist);
+  --tw-prose-code: var(--accent);
   --tw-prose-pre-code: var(--text);
   --tw-prose-pre-bg: var(--bg-3);
   --tw-prose-th-borders: var(--line);

@@ -17,12 +17,12 @@ export default function OgImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          backgroundColor: "#0C0C0C",
+          backgroundColor: "#07090A",
           backgroundImage:
             "radial-gradient(48% 42% at 15% 0%, rgba(182,0,168,0.22), transparent 70%)," +
             "radial-gradient(45% 40% at 85% 5%, rgba(118,33,176,0.22), transparent 70%)," +
             "radial-gradient(55% 45% at 55% 15%, rgba(190,76,0,0.14), transparent 72%)",
-          color: "#D7E2EA",
+          color: "#EDF3F1",
           fontFamily: "sans-serif",
         }}
       >
