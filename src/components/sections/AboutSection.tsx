@@ -20,7 +20,7 @@ export function AboutSection() {
           src={`${DECOR_BASE}/moon_icon.11395d36.png`}
           alt=""
           aria-hidden="true"
-          className="absolute left-[1%] top-[4%] w-[120px] sm:left-[2%] sm:w-[160px] md:left-[4%] md:w-[210px]"
+          className="absolute left-[3%] top-[6%] hidden max-h-[200px] w-[180px] object-contain xl:block 2xl:w-[210px]"
         />
       </FadeIn>
       <FadeIn delay={0.25} x={-80} y={0} duration={0.9}>
@@ -29,7 +29,7 @@ export function AboutSection() {
           src={`${DECOR_BASE}/p59_1.4659672e.png`}
           alt=""
           aria-hidden="true"
-          className="absolute bottom-[8%] left-[3%] w-[100px] sm:left-[6%] sm:w-[140px] md:left-[10%] md:w-[180px]"
+          className="absolute bottom-[10%] left-[5%] hidden max-h-[170px] w-[150px] object-contain xl:block 2xl:w-[180px]"
         />
       </FadeIn>
       <FadeIn delay={0.15} x={80} y={0} duration={0.9}>
@@ -38,7 +38,7 @@ export function AboutSection() {
           src={`${DECOR_BASE}/lego_icon-1.703bb594.png`}
           alt=""
           aria-hidden="true"
-          className="absolute right-[1%] top-[4%] w-[120px] sm:right-[2%] sm:w-[160px] md:right-[4%] md:w-[210px]"
+          className="absolute right-[3%] top-[6%] hidden max-h-[200px] w-[180px] object-contain xl:block 2xl:w-[210px]"
         />
       </FadeIn>
       <FadeIn delay={0.3} x={80} y={0} duration={0.9}>
@@ -47,7 +47,7 @@ export function AboutSection() {
           src={`${DECOR_BASE}/Group_134-1.2e04f3ce.png`}
           alt=""
           aria-hidden="true"
-          className="absolute bottom-[8%] right-[3%] w-[130px] sm:right-[6%] sm:w-[170px] md:right-[10%] md:w-[220px]"
+          className="absolute bottom-[10%] right-[5%] hidden max-h-[190px] w-[160px] object-contain xl:block 2xl:w-[200px]"
         />
       </FadeIn>
 
