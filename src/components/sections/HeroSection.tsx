@@ -31,20 +31,29 @@ export function HeroSection() {
         </FadeIn>
       </div>
 
-      <Magnet
-        padding={150}
-        strength={3}
-        className="absolute left-1/2 top-1/2 z-10 w-[280px] -translate-x-1/2 -translate-y-1/2 sm:top-auto sm:bottom-0 sm:w-[360px] sm:translate-y-0 md:w-[440px] lg:w-[520px]"
-      >
-        <FadeIn delay={0.6} y={30}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={PORTRAIT_SRC}
-            alt="Huzaifa Azhar, AI consultant and product builder"
-            className="w-full"
-          />
-        </FadeIn>
-      </Magnet>
+      {/* The portrait gets exactly the space left between the heading and
+          the footer row, so a short laptop viewport can't push it up over
+          the name the way a bottom-anchored absolute box did. */}
+      <div className="relative z-10 min-h-0 flex-1">
+        <Magnet
+          padding={150}
+          strength={3}
+          className="absolute inset-0 flex items-end justify-center"
+        >
+          <FadeIn
+            delay={0.6}
+            y={30}
+            className="flex h-full w-full items-end justify-center"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={PORTRAIT_SRC}
+              alt="Huzaifa Azhar, AI consultant and product builder"
+              className="max-h-full w-auto max-w-[280px] object-contain object-bottom sm:max-w-[360px] md:max-w-[440px] lg:max-w-[520px]"
+            />
+          </FadeIn>
+        </Magnet>
+      </div>
 
       <div className="relative z-20 flex items-end justify-between pb-7 sm:pb-8 md:pb-10">
         <FadeIn delay={0.35} y={20} className="px-6 md:px-10">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 /**
  * Character-by-character scroll-reveal text.
@@ -9,6 +9,10 @@ import { useEffect, useRef } from "react";
  * `--p` (scroll progress) on the paragraph and a static `--i` (index) per
  * character. That keeps the whole effect to a single style write per frame
  * instead of one scroll-linked animation value per character.
+ *
+ * Characters are grouped into inline-block words so the paragraph still
+ * wraps on spaces; per-character spans on their own would give the line no
+ * break opportunities and run off the side of the screen.
  */
 export function AnimatedText({
   text,
@@ -18,7 +22,14 @@ export function AnimatedText({
   className?: string;
 }) {
   const ref = useRef<HTMLParagraphElement>(null);
-  const chars = Array.from(text);
+
+  const { words, total } = useMemo(() => {
+    let index = 0;
+    const words = text
+      .split(" ")
+      .map((word) => Array.from(word).map((char) => ({ char, index: index++ })));
+    return { words, total: index };
+  }, [text]);
 
   useEffect(() => {
     const el = ref.current;
@@ -61,15 +72,22 @@ export function AnimatedText({
     <p
       ref={ref}
       className={className}
-      style={{ "--n": chars.length } as React.CSSProperties}
+      style={{ "--n": total } as React.CSSProperties}
     >
-      {chars.map((char, i) => (
-        <span
-          key={i}
-          className="animated-char"
-          style={{ "--i": i } as React.CSSProperties}
-        >
-          {char === " " ? " " : char}
+      {words.map((chars, wordIndex) => (
+        <span key={wordIndex}>
+          <span className="inline-block">
+            {chars.map(({ char, index }) => (
+              <span
+                key={index}
+                className="animated-char"
+                style={{ "--i": index } as React.CSSProperties}
+              >
+                {char}
+              </span>
+            ))}
+          </span>
+          {wordIndex < words.length - 1 ? " " : null}
         </span>
       ))}
     </p>
