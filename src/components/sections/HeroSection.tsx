@@ -2,72 +2,67 @@ import { Nav } from "@/components/ui/Nav";
 import { ContactButton } from "@/components/ui/ContactButton";
 import { Magnet } from "@/components/ui/Magnet";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { site } from "@/lib/site";
 
+/**
+ * TEMPORARY: still the old hosted avatar. Drop a square photo at
+ * public/portrait.jpg and change this to "/portrait.jpg" — the circular
+ * crop, feathered edge and teal bloom are all applied in CSS
+ * (see .portrait-* in globals.css), so no editing of the file is needed
+ * to make it blend with the background.
+ */
 const PORTRAIT_SRC =
   "https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png";
 
 export function HeroSection() {
   return (
-    <section
-      className="relative flex h-screen flex-col"
-      style={{ overflowX: "clip" }}
-    >
+    <section className="relative flex min-h-screen flex-col" style={{ overflowX: "clip" }}>
       <FadeIn delay={0} y={-20}>
-        <Nav className="px-6 pt-6 md:px-10 md:pt-8" />
+        <Nav className="mx-auto w-full max-w-[1400px] px-6 pt-6 md:px-10 md:pt-8" />
       </FadeIn>
 
-      <div className="overflow-hidden">
-        <FadeIn
-          delay={0.15}
-          y={40}
-          as="h1"
-          // Set on one line, so the size is bounded by the string's width:
-          // at 15vw it fills ~93% of the viewport at every breakpoint,
-          // leaving margin for the Georgia fallback. Raising this much
-          // further runs the text off the side.
-          className="hero-heading mt-6 w-full whitespace-nowrap text-[15vw] leading-none tracking-tight sm:mt-4 md:-mt-5"
-        >
-          Hi, i&apos;m Huzaifa
-        </FadeIn>
-      </div>
+      <div className="mx-auto flex w-full max-w-[1400px] flex-1 items-center px-6 py-14 md:px-10 md:py-20">
+        <div className="grid w-full items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+          {/* Left: name, a couple of lines, and the CTA. */}
+          <div className="order-2 flex flex-col items-start gap-6 lg:order-1">
+            <FadeIn delay={0.1} y={20}>
+              <p className="font-mono text-xs tracking-[0.2em] text-[#82CFC0] sm:text-sm">
+                {site.role}
+              </p>
+            </FadeIn>
 
-      {/* The portrait gets exactly the space left between the heading and
-          the footer row, so a short laptop viewport can't push it up over
-          the name the way a bottom-anchored absolute box did. */}
-      <div className="relative z-10 min-h-0 flex-1">
-        <Magnet
-          padding={150}
-          strength={3}
-          className="absolute inset-0 flex items-end justify-center"
-        >
-          <FadeIn
-            delay={0.6}
-            y={30}
-            className="flex h-full w-full items-end justify-center"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={PORTRAIT_SRC}
-              alt="Huzaifa Azhar, AI consultant and product builder"
-              className="max-h-full w-auto max-w-[280px] object-contain object-bottom sm:max-w-[360px] md:max-w-[440px] lg:max-w-[520px]"
-            />
+            <FadeIn delay={0.18} y={30} as="h1" className="hero-heading leading-[1.05] tracking-tight text-[clamp(2.75rem,6vw,5rem)]">
+              Hi, i&apos;m Huzaifa
+            </FadeIn>
+
+            <FadeIn delay={0.28} y={20}>
+              <p className="max-w-[46ch] text-[clamp(1rem,1.3vw,1.2rem)] leading-relaxed text-[#7B928D]">
+                {site.headline} I design and ship vertical AI products —
+                strategy through deployment — across logistics, healthcare,
+                fintech and security.
+              </p>
+            </FadeIn>
+
+            <FadeIn delay={0.4} y={20} className="pt-2">
+              <ContactButton />
+            </FadeIn>
+          </div>
+
+          {/* Right: portrait, blended into the page with a teal bloom. */}
+          <FadeIn delay={0.34} y={30} className="order-1 lg:order-2">
+            <Magnet padding={120} strength={6} className="mx-auto w-full max-w-[300px] sm:max-w-[380px] lg:max-w-[460px]">
+              <div className="portrait-frame">
+                <span className="portrait-glow" aria-hidden="true" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={PORTRAIT_SRC}
+                  alt="Huzaifa Azhar, AI consultant and product builder"
+                  className="portrait-img"
+                />
+              </div>
+            </Magnet>
           </FadeIn>
-        </Magnet>
-      </div>
-
-      <div className="relative z-20 flex items-end justify-between pb-7 sm:pb-8 md:pb-10">
-        <FadeIn delay={0.35} y={20} className="px-6 md:px-10">
-          <p
-            className="max-w-[160px] font-mono font-light uppercase leading-snug tracking-wide text-[#EDF3F1] sm:max-w-[220px] md:max-w-[260px]"
-            style={{ fontSize: "clamp(0.75rem, 1.4vw, 1.5rem)" }}
-          >
-            AI Consultant &amp; Product Builder
-          </p>
-        </FadeIn>
-
-        <FadeIn delay={0.5} y={20} className="px-6 md:px-10">
-          <ContactButton />
-        </FadeIn>
+        </div>
       </div>
     </section>
   );

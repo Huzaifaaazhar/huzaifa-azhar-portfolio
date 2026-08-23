@@ -152,6 +152,76 @@ html {
   color: var(--text-faint);
 }
 
+/* Hero portrait. The photo keeps its own background in the file; the mask
+   feathers its edge to transparent and the bloom behind it is drawn in the
+   site's teal, so the picture dissolves into the page instead of sitting on
+   it as a rectangle. */
+.portrait-frame {
+  position: relative;
+  aspect-ratio: 1;
+  width: 100%;
+}
+
+.portrait-glow {
+  position: absolute;
+  inset: -18%;
+  z-index: 0;
+  border-radius: 9999px;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 46%,
+    color-mix(in srgb, var(--accent) 26%, transparent) 0%,
+    color-mix(in srgb, var(--glow) 55%, transparent) 34%,
+    transparent 68%
+  );
+  filter: blur(14px);
+}
+
+.portrait-img {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  border-radius: 9999px;
+  object-fit: contain;
+  object-position: center 40%;
+  /* Solid through the face, dissolving well before the edge so the
+     photo's own backdrop never reads as a hard disc on the page. */
+  -webkit-mask-image: radial-gradient(
+    circle at 50% 44%,
+    #000 38%,
+    rgba(0, 0, 0, 0.72) 55%,
+    rgba(0, 0, 0, 0.25) 66%,
+    transparent 73%
+  );
+  mask-image: radial-gradient(
+    circle at 50% 44%,
+    #000 38%,
+    rgba(0, 0, 0, 0.72) 55%,
+    rgba(0, 0, 0, 0.25) 66%,
+    transparent 73%
+  );
+}
+
+/* Pulls the photo's neutral studio grey toward the site's teal and sinks
+   the rim into the page colour, so the crop reads as part of the
+   background rather than a picture placed on top of it. */
+.portrait-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: 9999px;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 44%,
+    color-mix(in srgb, var(--accent) 16%, transparent) 0%,
+    color-mix(in srgb, var(--glow) 42%, transparent) 45%,
+    var(--bg-mid) 72%
+  );
+  mix-blend-mode: soft-light;
+}
+
 /* Hairline card used across the blog/products pages. */
 .panel {
   background: color-mix(in srgb, var(--bg-2) 78%, transparent);
