@@ -4,15 +4,9 @@ import { Magnet } from "@/components/ui/Magnet";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { site } from "@/lib/site";
 
-/**
- * TEMPORARY: still the old hosted avatar. Drop a square photo at
- * public/portrait.jpg and change this to "/portrait.jpg" — the circular
- * crop, feathered edge and teal bloom are all applied in CSS
- * (see .portrait-* in globals.css), so no editing of the file is needed
- * to make it blend with the background.
- */
-const PORTRAIT_SRC =
-  "https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png";
+/** Self-hosted portrait. The circular crop, feathered edge and teal bloom
+ * are applied in CSS (see .portrait-* in globals.css). */
+const PORTRAIT_SRC = "/portrait.jpg";
 
 export function HeroSection() {
   return (

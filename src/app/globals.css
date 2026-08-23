@@ -183,23 +183,23 @@ html {
   height: 100%;
   width: 100%;
   border-radius: 9999px;
-  object-fit: contain;
-  object-position: center 40%;
+  object-fit: cover;
+  object-position: center 30%;
   /* Solid through the face, dissolving well before the edge so the
      photo's own backdrop never reads as a hard disc on the page. */
   -webkit-mask-image: radial-gradient(
-    circle at 50% 44%,
-    #000 38%,
-    rgba(0, 0, 0, 0.72) 55%,
-    rgba(0, 0, 0, 0.25) 66%,
-    transparent 73%
+    circle closest-side at 50% 48%,
+    #000 58%,
+    rgba(0, 0, 0, 0.78) 76%,
+    rgba(0, 0, 0, 0.3) 88%,
+    transparent 97%
   );
   mask-image: radial-gradient(
-    circle at 50% 44%,
-    #000 38%,
-    rgba(0, 0, 0, 0.72) 55%,
-    rgba(0, 0, 0, 0.25) 66%,
-    transparent 73%
+    circle closest-side at 50% 48%,
+    #000 58%,
+    rgba(0, 0, 0, 0.78) 76%,
+    rgba(0, 0, 0, 0.3) 88%,
+    transparent 97%
   );
 }
 
