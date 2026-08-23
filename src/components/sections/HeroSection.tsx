@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 
 /** Self-hosted portrait. The circular crop, feathered edge and teal bloom
  * are applied in CSS (see .portrait-* in globals.css). */
-const PORTRAIT_SRC = "/portrait.jpg";
+const PORTRAIT_SRC = "/portrait.webp";
 
 export function HeroSection() {
   return (
@@ -44,7 +44,7 @@ export function HeroSection() {
 
           {/* Right: portrait, blended into the page with a teal bloom. */}
           <FadeIn delay={0.34} y={30} className="order-1 lg:order-2">
-            <Magnet padding={120} strength={6} className="mx-auto w-full max-w-[300px] sm:max-w-[380px] lg:max-w-[460px]">
+            <Magnet padding={120} strength={6} className="mx-auto w-full max-w-[260px] sm:max-w-[300px] lg:max-w-[360px]">
               <div className="portrait-frame">
                 <span className="portrait-glow" aria-hidden="true" />
                 {/* eslint-disable-next-line @next/next/no-img-element */}

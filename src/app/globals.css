@@ -152,74 +152,76 @@ html {
   color: var(--text-faint);
 }
 
-/* Hero portrait. The photo keeps its own background in the file; the mask
-   feathers its edge to transparent and the bloom behind it is drawn in the
-   site's teal, so the picture dissolves into the page instead of sitting on
-   it as a rectangle. */
+/* Hero portrait. A background-free PNG standing in front of a teal bloom:
+   the glow sits behind the figure, a drop-shadow follows its actual
+   silhouette so it lifts off the page rather than reading as a flat
+   sticker, and the base fades out so the crop at the ankles dissolves
+   into the background. */
 .portrait-frame {
   position: relative;
-  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
   width: 100%;
 }
 
 .portrait-glow {
   position: absolute;
-  inset: -18%;
+  left: 50%;
+  top: 4%;
   z-index: 0;
+  width: 112%;
+  aspect-ratio: 1;
+  transform: translateX(-50%);
   border-radius: 9999px;
   pointer-events: none;
   background: radial-gradient(
-    circle at 50% 46%,
-    color-mix(in srgb, var(--accent) 26%, transparent) 0%,
-    color-mix(in srgb, var(--glow) 55%, transparent) 34%,
-    transparent 68%
+    circle,
+    color-mix(in srgb, var(--accent) 42%, transparent) 0%,
+    color-mix(in srgb, var(--glow) 88%, transparent) 36%,
+    transparent 70%
   );
-  filter: blur(14px);
+  filter: blur(30px);
+}
+
+/* Second, tighter bloom right behind the torso for depth. */
+.portrait-frame::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 26%;
+  z-index: 0;
+  width: 58%;
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 38%, transparent) 0%,
+    transparent 64%
+  );
+  filter: blur(38px);
 }
 
 .portrait-img {
   position: relative;
   z-index: 1;
-  height: 100%;
-  width: 100%;
-  border-radius: 9999px;
-  object-fit: cover;
-  object-position: center 30%;
-  /* Solid through the face, dissolving well before the edge so the
-     photo's own backdrop never reads as a hard disc on the page. */
-  -webkit-mask-image: radial-gradient(
-    circle closest-side at 50% 48%,
-    #000 58%,
-    rgba(0, 0, 0, 0.78) 76%,
-    rgba(0, 0, 0, 0.3) 88%,
-    transparent 97%
-  );
-  mask-image: radial-gradient(
-    circle closest-side at 50% 48%,
-    #000 58%,
-    rgba(0, 0, 0, 0.78) 76%,
-    rgba(0, 0, 0, 0.3) 88%,
-    transparent 97%
-  );
+  width: auto;
+  max-width: 100%;
+  /* Kept modest on phones so the name and copy stay above the fold;
+     the figure only takes over once there's a second column. */
+  max-height: min(42vh, 360px);
+  object-fit: contain;
+  filter: drop-shadow(0 22px 38px rgba(0, 0, 0, 0.55))
+    drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+  -webkit-mask-image: linear-gradient(180deg, #000 84%, transparent 99%);
+  mask-image: linear-gradient(180deg, #000 84%, transparent 99%);
 }
 
-/* Pulls the photo's neutral studio grey toward the site's teal and sinks
-   the rim into the page colour, so the crop reads as part of the
-   background rather than a picture placed on top of it. */
-.portrait-frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  border-radius: 9999px;
-  pointer-events: none;
-  background: radial-gradient(
-    circle at 50% 44%,
-    color-mix(in srgb, var(--accent) 16%, transparent) 0%,
-    color-mix(in srgb, var(--glow) 42%, transparent) 45%,
-    var(--bg-mid) 72%
-  );
-  mix-blend-mode: soft-light;
+@media (min-width: 1024px) {
+  .portrait-img {
+    max-height: min(74vh, 640px);
+  }
 }
 
 /* Hairline card used across the blog/products pages. */
