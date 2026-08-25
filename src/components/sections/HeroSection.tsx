@@ -44,7 +44,7 @@ export function HeroSection() {
 
           {/* Right: portrait, blended into the page with a teal bloom. */}
           <FadeIn delay={0.34} y={30} className="order-1 lg:order-2">
-            <Magnet padding={120} strength={6} className="mx-auto w-full max-w-[260px] sm:max-w-[300px] lg:max-w-[360px]">
+            <Magnet padding={120} strength={6} className="mx-auto w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[440px]">
               <div className="portrait-frame">
                 <span className="portrait-glow" aria-hidden="true" />
                 {/* eslint-disable-next-line @next/next/no-img-element */}
