@@ -152,11 +152,10 @@ html {
   color: var(--text-faint);
 }
 
-/* Hero portrait. A background-free PNG standing in front of a teal bloom:
-   the glow sits behind the figure, a drop-shadow follows its actual
-   silhouette so it lifts off the page rather than reading as a flat
-   sticker, and the base fades out so the crop at the ankles dissolves
-   into the background. */
+/* Hero portrait. A cut-out standing in the page, not a picture placed on
+   it. Depth comes from a grounded contact shadow and a tight directional
+   drop-shadow rather than a wide blur, which would halo the edges and read
+   as soft. The bloom behind is deliberately faint. */
 .portrait-frame {
   position: relative;
   display: flex;
@@ -164,43 +163,47 @@ html {
   width: 100%;
 }
 
+/* Faint light behind the figure — enough to separate it from the
+   background, not a glowing disc. */
 .portrait-glow {
   position: absolute;
   left: 50%;
-  top: 4%;
+  top: 8%;
   z-index: 0;
-  width: 112%;
-  aspect-ratio: 1;
+  width: 78%;
+  height: 62%;
   transform: translateX(-50%);
   border-radius: 9999px;
   pointer-events: none;
   background: radial-gradient(
-    circle,
-    color-mix(in srgb, var(--accent) 42%, transparent) 0%,
-    color-mix(in srgb, var(--glow) 88%, transparent) 36%,
-    transparent 70%
+    ellipse at 50% 45%,
+    color-mix(in srgb, var(--accent) 15%, transparent) 0%,
+    color-mix(in srgb, var(--glow) 30%, transparent) 45%,
+    transparent 72%
   );
-  filter: blur(30px);
+  filter: blur(44px);
 }
 
-/* Second, tighter bloom right behind the torso for depth. */
-.portrait-frame::before {
+/* Contact shadow on the ground: what actually sells the figure as
+   standing in the scene rather than floating flat. */
+.portrait-frame::after {
   content: "";
   position: absolute;
   left: 50%;
-  top: 26%;
+  bottom: 1%;
   z-index: 0;
-  width: 58%;
-  aspect-ratio: 1;
+  width: 62%;
+  height: 5%;
   transform: translateX(-50%);
   border-radius: 9999px;
   pointer-events: none;
   background: radial-gradient(
-    circle,
-    color-mix(in srgb, var(--accent) 38%, transparent) 0%,
-    transparent 64%
+    ellipse at 50% 50%,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.35) 45%,
+    transparent 75%
   );
-  filter: blur(38px);
+  filter: blur(12px);
 }
 
 .portrait-img {
@@ -208,19 +211,20 @@ html {
   z-index: 1;
   width: auto;
   max-width: 100%;
-  /* Kept modest on phones so the name and copy stay above the fold;
-     the figure only takes over once there's a second column. */
-  max-height: min(42vh, 360px);
+  /* Kept modest on phones so the name and copy stay above the fold. */
+  max-height: min(46vh, 400px);
   object-fit: contain;
-  filter: drop-shadow(0 22px 38px rgba(0, 0, 0, 0.55))
-    drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
-  -webkit-mask-image: linear-gradient(180deg, #000 74%, rgba(0,0,0,0.35) 92%, transparent 100%);
-  mask-image: linear-gradient(180deg, #000 74%, rgba(0,0,0,0.35) 92%, transparent 100%);
+  /* Tight and mostly downward: depth without softening the silhouette. */
+  filter: drop-shadow(0 14px 16px rgba(0, 0, 0, 0.5))
+    drop-shadow(0 3px 4px rgba(0, 0, 0, 0.4));
+  /* Only the last sliver fades, so the frame crop isn't a hard line. */
+  -webkit-mask-image: linear-gradient(180deg, #000 94%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 94%, transparent 100%);
 }
 
 @media (min-width: 1024px) {
   .portrait-img {
-    max-height: min(74vh, 640px);
+    max-height: min(76vh, 660px);
   }
 }
 
