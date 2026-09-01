@@ -2,6 +2,7 @@ import { Nav } from "@/components/ui/Nav";
 import { ContactButton } from "@/components/ui/ContactButton";
 import { Magnet } from "@/components/ui/Magnet";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { ScrollFx } from "@/components/ui/ScrollFx";
 import { site } from "@/lib/site";
 
 /** Self-hosted portrait. The circular crop, feathered edge and teal bloom
@@ -18,7 +19,8 @@ export function HeroSection() {
       <div className="mx-auto flex w-full max-w-[1400px] flex-1 items-center px-6 py-14 md:px-10 md:py-20">
         <div className="grid w-full items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           {/* Left: name, a couple of lines, and the CTA. */}
-          <div className="order-2 flex flex-col items-start gap-6 lg:order-1">
+          <ScrollFx y={34} className="order-2 lg:order-1">
+          <div className="flex flex-col items-start gap-6">
             <FadeIn delay={0.1} y={20}>
               <p className="font-mono text-xs tracking-[0.2em] text-[#82CFC0] sm:text-sm">
                 {site.role}
@@ -41,9 +43,11 @@ export function HeroSection() {
               <ContactButton />
             </FadeIn>
           </div>
+          </ScrollFx>
 
           {/* Right: portrait, blended into the page with a teal bloom. */}
           <FadeIn delay={0.34} y={30} className="order-1 lg:order-2">
+            <ScrollFx y={-70} scale={0.94} perspective={1200}>
             <Magnet padding={120} strength={6} className="mx-auto w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[440px]">
               <div className="portrait-frame">
                 <span className="portrait-glow" aria-hidden="true" />
@@ -55,6 +59,7 @@ export function HeroSection() {
                 />
               </div>
             </Magnet>
+            </ScrollFx>
           </FadeIn>
         </div>
       </div>

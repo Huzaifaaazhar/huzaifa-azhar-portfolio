@@ -1,5 +1,6 @@
 import { certifications } from "@/data/certifications";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { ScrollFx } from "@/components/ui/ScrollFx";
 
 export function CertificationsSection() {
   return (
@@ -25,6 +26,7 @@ export function CertificationsSection() {
         <div className="mt-16 flex flex-col gap-14 sm:mt-20">
           {certifications.map((cert, i) => (
             <FadeIn key={cert.title} delay={i * 0.1}>
+              <ScrollFx rotateX={7} z={90} scale={0.965} perspective={1100} enterOnly>
               <div className="flex flex-col gap-5">
                 <div
                   className={`overflow-hidden rounded-2xl border border-[#1A2A28] bg-[#101B1A] ${
@@ -52,6 +54,7 @@ export function CertificationsSection() {
                   </span>
                 </div>
               </div>
+              </ScrollFx>
             </FadeIn>
           ))}
         </div>

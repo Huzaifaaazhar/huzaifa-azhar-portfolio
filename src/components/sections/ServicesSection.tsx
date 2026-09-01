@@ -1,4 +1,5 @@
 import { FadeIn } from "@/components/ui/FadeIn";
+import { ScrollFx } from "@/components/ui/ScrollFx";
 
 const SERVICES = [
   {
@@ -74,12 +75,14 @@ export function ServicesSection() {
               className="flex items-center gap-6 py-8 sm:py-10 md:py-12"
               style={{ borderBottom: "1px solid var(--line)" }}
             >
-              <span
-                className="shrink-0 font-black text-[#4C5F5B]"
-                style={{ fontSize: "clamp(3rem, 10vw, 140px)" }}
-              >
-                {service.number}
-              </span>
+              <ScrollFx y={30} className="shrink-0">
+                <span
+                  className="font-black text-[#4C5F5B]"
+                  style={{ fontSize: "clamp(3rem, 10vw, 140px)" }}
+                >
+                  {service.number}
+                </span>
+              </ScrollFx>
               <div className="flex flex-col gap-2">
                 <h3
                   className="font-semibold text-[#EDF3F1]"

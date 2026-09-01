@@ -1,4 +1,5 @@
 import { FadeIn } from "@/components/ui/FadeIn";
+import { ScrollFx } from "@/components/ui/ScrollFx";
 import { AnimatedText } from "@/components/ui/AnimatedText";
 import { ContactButton } from "@/components/ui/ContactButton";
 
@@ -54,12 +55,14 @@ export function AboutSection() {
       <div className="flex flex-col items-center gap-16 sm:gap-20 md:gap-24">
         <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16">
           <FadeIn delay={0} y={40}>
+            <ScrollFx y={24}>
             <h2
               className="hero-heading text-center leading-none tracking-tight"
               style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
             >
               About me
             </h2>
+            </ScrollFx>
           </FadeIn>
 
           <AnimatedText

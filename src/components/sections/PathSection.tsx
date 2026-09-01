@@ -1,5 +1,6 @@
 import { experience, education } from "@/data/experience";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { ScrollFx } from "@/components/ui/ScrollFx";
 
 export function PathSection() {
   return (
@@ -17,6 +18,7 @@ export function PathSection() {
         <div className="mt-16 flex flex-col gap-12 sm:mt-20">
           {experience.map((entry, i) => (
             <FadeIn key={entry.company} delay={i * 0.1}>
+              <ScrollFx y={26} rotateX={4} perspective={1000} enterOnly>
               <div className="border-l-2 border-[#1A2A28] pl-6 sm:pl-8">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <h3 className="text-xl font-medium text-[#EDF3F1] sm:text-2xl">
@@ -39,6 +41,7 @@ export function PathSection() {
                   </ul>
                 )}
               </div>
+              </ScrollFx>
             </FadeIn>
           ))}
         </div>

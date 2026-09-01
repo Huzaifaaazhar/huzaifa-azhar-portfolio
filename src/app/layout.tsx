@@ -3,6 +3,7 @@ import { Inter, Playfair_Display, JetBrains_Mono, Alex_Brush } from "next/font/g
 import "./globals.css";
 import { site } from "@/lib/site";
 import { PersonJsonLd } from "@/components/JsonLd";
+import { SmoothScroll } from "@/components/ui/SmoothScroll";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -93,6 +94,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} relative min-h-full`}
       >
+        <SmoothScroll />
         <div className="page-glow" aria-hidden="true" />
         <a
           href="#main"
