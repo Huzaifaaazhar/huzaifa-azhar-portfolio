@@ -6,29 +6,40 @@
 /*  Tweak colors here; everything (Tailwind utilities included) follows. */
 /* ------------------------------------------------------------------ */
 :root {
-  /* Page gradient: near-black at the top easing into deep teal, with the
-     bloom bleeding down from the very top of the document only. */
-  --bg-top: #07090a;
-  --bg-mid: #0c1616;
-  --bg-bottom: #0f1d1d;
-  --glow: #1b4440;
+  /* Midnight black base, cooled toward blue as the page descends, with an
+     electric-blue bloom at the very top. */
+  --bg-top: #06080e;
+  --bg-mid: #0a0e1a;
+  --bg-bottom: #0d1324;
+  --glow: #16306b;
 
-  /* `--bg` stays the flat fallback for anything that needs one solid
-     colour (theme-color, OG image, a surface that must be opaque). */
-  --bg: #07090a;
-  --bg-2: #101b1a;
-  --bg-3: #142322;
+  /* Flat fallback wherever one solid colour is needed (theme-color, OG
+     image, an opaque surface). */
+  --bg: #06080e;
+  --bg-2: #111726;
+  --bg-3: #16203a;
 
-  --text: #edf3f1;
-  --text-dim: #7b928d;
-  --text-faint: #4c5f5b;
+  --text: #eaf0fa;
+  --text-dim: #8a99b8;
+  --text-faint: #56657f;
 
-  --surface: #101b1a;
-  --line: #1a2a28;
+  --surface: #111726;
+  --line: #1e2941;
 
-  /* Reserved for small high-signal moments — links, the email address,
-     active states. Never large fills. */
-  --accent: #82cfc0;
+  /* Electric blue leads; cantaloupe orange is the warm counterpoint. Both
+     stay on small, high-signal elements and gradient ends — never large
+     flat fills, which is what keeps them vivid rather than garish. */
+  --accent: #2d7fff;
+  --accent-soft: #7fb0ff;
+  --accent-warm: #ff9a5c;
+
+  /* The brand gradient: cool to warm across the two accents. */
+  --grad-brand: linear-gradient(
+    105deg,
+    var(--accent) 0%,
+    var(--accent-soft) 46%,
+    var(--accent-warm) 100%
+  );
 }
 
 /* Map tokens into Tailwind v4 theme so `bg-bg`, `text-ink`,
@@ -38,6 +49,7 @@
   --color-bg-2: var(--bg-2);
   --color-bg-3: var(--bg-3);
   --color-accent: var(--accent);
+  --color-accent-warm: var(--accent-warm);
   --color-surface: var(--surface);
   --color-ink: var(--text);
   --color-ink-dim: var(--text-dim);
@@ -90,7 +102,8 @@ body {
   background: radial-gradient(
     120% 70% at 50% -8%,
     var(--glow) 0%,
-    transparent 42%
+    color-mix(in srgb, var(--glow) 45%, transparent) 20%,
+    transparent 46%
   );
 }
 
@@ -139,7 +152,12 @@ html {
   font-family: var(--font-playfair), Georgia, serif;
   font-weight: 400;
   text-transform: none;
-  background: linear-gradient(180deg, var(--text-dim) 0%, var(--text) 100%);
+  background: linear-gradient(
+    105deg,
+    var(--text) 0%,
+    var(--accent-soft) 52%,
+    var(--accent-warm) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -175,12 +193,18 @@ html {
   transform: translateX(-50%);
   border-radius: 9999px;
   pointer-events: none;
-  background: radial-gradient(
-    ellipse at 50% 45%,
-    color-mix(in srgb, var(--accent) 15%, transparent) 0%,
-    color-mix(in srgb, var(--glow) 30%, transparent) 45%,
-    transparent 72%
-  );
+  background:
+    radial-gradient(
+      ellipse at 62% 62%,
+      color-mix(in srgb, var(--accent-warm) 14%, transparent) 0%,
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse at 42% 40%,
+      color-mix(in srgb, var(--accent) 20%, transparent) 0%,
+      color-mix(in srgb, var(--glow) 34%, transparent) 46%,
+      transparent 74%
+    );
   filter: blur(44px);
 }
 

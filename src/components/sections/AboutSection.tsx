@@ -67,7 +67,7 @@ export function AboutSection() {
 
           <AnimatedText
             text={PARAGRAPH}
-            className="max-w-[560px] text-center font-medium leading-relaxed text-[#EDF3F1] text-[clamp(1rem,2vw,1.35rem)]"
+            className="max-w-[560px] text-center font-medium leading-relaxed text-[#EAF0FA] text-[clamp(1rem,2vw,1.35rem)]"
           />
         </div>
 

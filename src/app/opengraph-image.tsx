@@ -17,12 +17,12 @@ export default function OgImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          backgroundColor: "#07090A",
+          backgroundColor: "#06080E",
           backgroundImage:
             "radial-gradient(48% 42% at 15% 0%, rgba(182,0,168,0.22), transparent 70%)," +
             "radial-gradient(45% 40% at 85% 5%, rgba(118,33,176,0.22), transparent 70%)," +
             "radial-gradient(55% 45% at 55% 15%, rgba(190,76,0,0.14), transparent 72%)",
-          color: "#EDF3F1",
+          color: "#EAF0FA",
           fontFamily: "sans-serif",
         }}
       >
@@ -32,7 +32,7 @@ export default function OgImage() {
             fontSize: 26,
             letterSpacing: 6,
             textTransform: "uppercase",
-            color: "#BBCCD7",
+            color: "#8A99B8",
           }}
         >
           {`${site.name} · ${site.role}`}

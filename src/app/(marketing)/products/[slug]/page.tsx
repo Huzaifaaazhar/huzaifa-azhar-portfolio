@@ -47,14 +47,14 @@ export default async function ProductPage({
         <FadeIn>
           <Link
             href="/products"
-            className="font-mono text-xs font-medium uppercase tracking-widest text-[#7B928D] hover:text-[#EDF3F1]"
+            className="font-mono text-xs font-medium uppercase tracking-widest text-[#8A99B8] hover:text-[#EAF0FA]"
           >
             ← All products
           </Link>
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <p className="mt-8 font-mono text-sm font-medium uppercase tracking-widest text-[#7B928D]">
+          <p className="mt-8 font-mono text-sm font-medium uppercase tracking-widest text-[#8A99B8]">
             AI for {product.industry}
           </p>
           <h1
@@ -63,41 +63,41 @@ export default async function ProductPage({
           >
             {product.name}
           </h1>
-          <p className="mt-4 text-lg text-[#7B928D]">{product.tagline}</p>
+          <p className="mt-4 text-lg text-[#8A99B8]">{product.tagline}</p>
         </FadeIn>
 
         <FadeIn delay={0.2}>
           <div className="mt-12 flex flex-col gap-10">
             <div>
-              <h2 className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-[#7B928D]">
+              <h2 className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-[#8A99B8]">
                 Business problem
               </h2>
-              <p className="leading-relaxed text-[#EDF3F1]">{product.problem}</p>
+              <p className="leading-relaxed text-[#EAF0FA]">{product.problem}</p>
             </div>
             <div>
-              <h2 className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-[#7B928D]">
+              <h2 className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-[#8A99B8]">
                 Who it&apos;s for
               </h2>
-              <p className="leading-relaxed text-[#EDF3F1]">{product.marketFit}</p>
+              <p className="leading-relaxed text-[#EAF0FA]">{product.marketFit}</p>
             </div>
             <div>
-              <h2 className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-[#7B928D]">
+              <h2 className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-[#8A99B8]">
                 Solution
               </h2>
-              <p className="leading-relaxed text-[#EDF3F1]">{product.solution}</p>
+              <p className="leading-relaxed text-[#EAF0FA]">{product.solution}</p>
             </div>
           </div>
         </FadeIn>
 
         <FadeIn delay={0.3}>
           <ul
-            className="mt-8 flex flex-wrap gap-2 border-t border-[#1A2A28] pt-8"
+            className="mt-8 flex flex-wrap gap-2 border-t border-[#1E2941] pt-8"
             aria-label="Technology"
           >
             {product.tech.map((t) => (
               <li
                 key={t}
-                className="rounded-full bg-[#152423] px-3 py-1 font-mono text-xs uppercase tracking-wide text-[#7B928D]"
+                className="rounded-full bg-[#16203A] px-3 py-1 font-mono text-xs uppercase tracking-wide text-[#8A99B8]"
               >
                 {t}
               </li>
@@ -111,7 +111,7 @@ export default async function ProductPage({
               <LiveProjectButton href={product.liveUrl} />
             ) : (
               <div className="flex flex-wrap items-center gap-4">
-                <span className="rounded-full border-2 border-[#1A2A28] px-6 py-2.5 font-mono text-sm font-medium uppercase tracking-widest text-[#4C5F5B]">
+                <span className="rounded-full border-2 border-[#1E2941] px-6 py-2.5 font-mono text-sm font-medium uppercase tracking-widest text-[#56657F]">
                   {statusLabel[product.status]}
                 </span>
                 <ContactButton />
