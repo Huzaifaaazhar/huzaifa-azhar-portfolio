@@ -12,13 +12,13 @@ export function Nav({
   return (
     <nav
       aria-label="Main"
-      className={`flex flex-wrap items-center gap-x-5 gap-y-2 text-[#F3EEE4] ${spread ? "justify-between" : "gap-6 sm:gap-8"} ${className ?? ""}`}
+      className={`flex flex-wrap items-center gap-x-5 gap-y-2 text-[#F3F1E8] ${spread ? "justify-between" : "gap-6 sm:gap-8"} ${className ?? ""}`}
     >
       {nav.map((item) => (
         <Link
           key={item.label}
           href={item.href}
-          className="text-sm font-normal transition-colors duration-200 hover:text-[#9CAF88] sm:text-base"
+          className="text-sm font-normal transition-colors duration-200 hover:text-[#E8A33D] sm:text-base"
         >
           {item.label}
         </Link>

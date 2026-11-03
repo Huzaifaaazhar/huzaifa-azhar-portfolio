@@ -71,7 +71,7 @@ export function AboutSection() {
         <div className="flex flex-col items-start gap-10 lg:col-span-6 lg:col-start-7 lg:pt-28">
           <AnimatedText
             text={PARAGRAPH}
-            className="max-w-[560px] font-medium leading-relaxed text-[#F3EEE4] text-[clamp(1rem,2vw,1.35rem)]"
+            className="max-w-[560px] font-medium leading-relaxed text-[#F3F1E8] text-[clamp(1rem,2vw,1.35rem)]"
           />
           <ContactButton />
         </div>

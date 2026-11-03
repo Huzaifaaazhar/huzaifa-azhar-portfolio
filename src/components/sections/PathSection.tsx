@@ -19,22 +19,22 @@ export function PathSection() {
           {experience.map((entry, i) => (
             <FadeIn key={entry.company} delay={i * 0.1}>
               <ScrollFx y={26} rotateX={4} perspective={1000} enterOnly>
-              <div className="border-l-2 border-[#332A1F] pl-6 sm:pl-8">
+              <div className="border-l-2 border-[#2A342A] pl-6 sm:pl-8">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <h3 className="text-xl font-medium text-[#F3EEE4] sm:text-2xl">
-                    {entry.role} <span className="text-[#7B7062]">— {entry.company}</span>
+                  <h3 className="text-xl font-medium text-[#F3F1E8] sm:text-2xl">
+                    {entry.role} <span className="text-[#6E7A6B]">— {entry.company}</span>
                   </h3>
-                  <span className="font-mono text-xs text-[#7B7062]">
+                  <span className="font-mono text-xs text-[#6E7A6B]">
                     {entry.period}
                   </span>
                 </div>
-                <p className="mt-1 font-mono text-xs text-[#7B7062]">
+                <p className="mt-1 font-mono text-xs text-[#6E7A6B]">
                   {entry.location}
                 </p>
                 {entry.highlights.length > 0 && (
                   <ul className="mt-4 flex flex-col gap-2">
                     {entry.highlights.map((h) => (
-                      <li key={h} className="leading-relaxed text-[#AEA392]">
+                      <li key={h} className="leading-relaxed text-[#A6B0A0]">
                         {h}
                       </li>
                     ))}
@@ -46,25 +46,25 @@ export function PathSection() {
           ))}
 
           <FadeIn delay={experience.length * 0.1}>
-            <h3 className="mt-8 font-mono text-xs text-[#7B7062]">Education</h3>
+            <h3 className="mt-8 font-mono text-xs text-[#6E7A6B]">Education</h3>
           </FadeIn>
 
           <div className="flex flex-col gap-8">
           {education.map((entry, i) => (
             <FadeIn key={entry.school} delay={experience.length * 0.1 + 0.1 + i * 0.1}>
-              <div className="border-l-2 border-[#332A1F] pl-6 sm:pl-8">
+              <div className="border-l-2 border-[#2A342A] pl-6 sm:pl-8">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <h3 className="text-xl font-medium text-[#F3EEE4] sm:text-2xl">
-                    {entry.degree} <span className="text-[#7B7062]">— {entry.school}</span>
+                  <h3 className="text-xl font-medium text-[#F3F1E8] sm:text-2xl">
+                    {entry.degree} <span className="text-[#6E7A6B]">— {entry.school}</span>
                   </h3>
-                  <span className="font-mono text-xs text-[#7B7062]">
+                  <span className="font-mono text-xs text-[#6E7A6B]">
                     {entry.period}
                   </span>
                 </div>
                 {entry.highlights.length > 0 && (
                   <ul className="mt-4 flex flex-col gap-2">
                     {entry.highlights.map((h) => (
-                      <li key={h} className="leading-relaxed text-[#AEA392]">
+                      <li key={h} className="leading-relaxed text-[#A6B0A0]">
                         {h}
                       </li>
                     ))}

@@ -6,26 +6,24 @@
 /*  Tweak colors here; everything (Tailwind utilities included) follows. */
 /* ------------------------------------------------------------------ */
 :root {
-  /* Warm, organic base: walnut pushed almost to black at the top and
-     opening up as the page descends. */
-  --bg-top: #100d0a;
-  --bg-mid: #16120d;
-  --bg-bottom: #1c1710;
+  /* Sage is the base: a deep, desaturated green that opens up as the page
+     descends. Walnut is the secondary surface colour, amber the light. */
+  --bg-top: #0c110d;
+  --bg-mid: #111a13;
+  --bg-bottom: #16231a;
 
-  --bg: #100d0a;
-  --bg-2: #1d1811;
-  --bg-3: #241d15;
+  --bg: #0c110d;
+  --bg-2: #1a231b;
+  --bg-3: #22301f;
 
-  --text: #f3eee4;
-  --text-dim: #aea392;
-  --text-faint: #7b7062;
+  --text: #f3f1e8;
+  --text-dim: #a6b0a0;
+  --text-faint: #6e7a6b;
 
-  --surface: #1d1811;
-  --surface-2: #241d15;
-  --line: #332a1f;
+  --surface: #1a231b;
+  --surface-walnut: #211a12;
+  --line: #2a342a;
 
-  /* Hierarchy: sage leads, walnut carries the structure, amber is the
-     light source — used sparingly so it still reads as a glow. */
   --sage: #9caf88;
   --sage-soft: #bfcdaf;
   --walnut: #6b4f3a;
@@ -33,22 +31,19 @@
   --amber: #e8a33d;
   --amber-soft: #f6c978;
 
-  /* Kept so existing utilities keep resolving. */
-  --accent: var(--sage);
-  --accent-soft: var(--sage-soft);
+  /* With sage holding the background, amber carries links and highlights
+     so they still separate from the page. */
+  --accent: var(--amber);
+  --accent-soft: var(--amber-soft);
   --accent-warm: var(--amber);
-  --glow: #3a2d1e;
+  --glow: #243520;
 
   --grad-brand: linear-gradient(
     105deg,
-    var(--sage) 0%,
-    var(--sage-soft) 38%,
-    var(--amber) 100%
+    var(--walnut-soft) 0%,
+    var(--amber) 52%,
+    var(--amber-soft) 100%
   );
-}
-
-* {
-  box-sizing: border-box;
 }
 
 html,
@@ -88,22 +83,22 @@ body {
   background:
     radial-gradient(
       58% 42% at 12% 6%,
-      color-mix(in srgb, var(--sage) 30%, transparent) 0%,
-      transparent 58%
+      color-mix(in srgb, var(--sage) 34%, transparent) 0%,
+      transparent 60%
     ),
     radial-gradient(
       52% 38% at 88% 14%,
-      color-mix(in srgb, var(--amber) 26%, transparent) 0%,
-      transparent 56%
+      color-mix(in srgb, var(--amber) 20%, transparent) 0%,
+      transparent 54%
     ),
     radial-gradient(
       70% 48% at 62% 40%,
-      color-mix(in srgb, var(--walnut) 20%, transparent) 0%,
-      transparent 64%
+      color-mix(in srgb, var(--walnut) 30%, transparent) 0%,
+      transparent 66%
     ),
     radial-gradient(
       46% 34% at 24% 62%,
-      color-mix(in srgb, var(--sage) 16%, transparent) 0%,
+      color-mix(in srgb, var(--sage) 22%, transparent) 0%,
       transparent 62%
     );
   filter: blur(14px);
@@ -125,12 +120,12 @@ body {
     ),
     radial-gradient(
       56% 40% at 16% 66%,
-      color-mix(in srgb, var(--sage) 18%, transparent) 0%,
+      color-mix(in srgb, var(--sage) 24%, transparent) 0%,
       transparent 64%
     ),
     radial-gradient(
       64% 44% at 50% 92%,
-      color-mix(in srgb, var(--walnut) 18%, transparent) 0%,
+      color-mix(in srgb, var(--walnut) 26%, transparent) 0%,
       transparent 68%
     );
   filter: blur(16px);

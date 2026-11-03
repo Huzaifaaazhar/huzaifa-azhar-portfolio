@@ -5,7 +5,7 @@ export function LiveProjectButton({
   href?: string;
   className?: string;
 }) {
-  const classes = `inline-flex items-center justify-center rounded-full border border-[#332A1F] px-8 py-3 font-mono text-sm font-medium uppercase tracking-widest text-[#9CAF88] transition-colors hover:bg-[#241D15] sm:px-10 sm:py-3.5 sm:text-base ${className ?? ""}`;
+  const classes = `inline-flex items-center justify-center rounded-full border border-[#2A342A] px-8 py-3 font-mono text-sm font-medium uppercase tracking-widest text-[#E8A33D] transition-colors hover:bg-[#22301F] sm:px-10 sm:py-3.5 sm:text-base ${className ?? ""}`;
 
   if (href) {
     return (

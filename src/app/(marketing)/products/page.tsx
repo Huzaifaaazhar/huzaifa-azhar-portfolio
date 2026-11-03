@@ -29,10 +29,10 @@ function groupByIndustry(items: Product[]) {
 function InfoBlock({ label, children }: { label: string; children: string }) {
   return (
     <div>
-      <h3 className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-[#AEA392]">
+      <h3 className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-[#A6B0A0]">
         {label}
       </h3>
-      <p className="leading-relaxed text-[#F3EEE4]">{children}</p>
+      <p className="leading-relaxed text-[#F3F1E8]">{children}</p>
     </div>
   );
 }
@@ -42,13 +42,13 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
     <FadeIn delay={index * 0.1}>
       <article
         id={product.slug}
-        className="scroll-mt-24 rounded-[40px] border border-[#332A1F] bg-[#1D1811] p-6 sm:rounded-[50px] sm:p-8 md:rounded-[60px] md:p-10"
+        className="scroll-mt-24 rounded-[40px] border border-[#2A342A] bg-[#1A231B] p-6 sm:rounded-[50px] sm:p-8 md:rounded-[60px] md:p-10"
         aria-labelledby={`${product.slug}-title`}
       >
         <header className="mb-8 flex flex-wrap items-start justify-between gap-6">
           <div className="flex items-baseline gap-4 sm:gap-6">
             <span
-              className="font-black text-[#F3EEE4]"
+              className="font-black text-[#F3F1E8]"
               style={{ fontSize: "clamp(2.5rem, 8vw, 100px)" }}
             >
               {String(index + 1).padStart(2, "0")}
@@ -56,20 +56,20 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
             <div className="flex flex-col gap-1">
               <h2
                 id={`${product.slug}-title`}
-                className="text-xl font-semibold text-[#F3EEE4] sm:text-2xl md:text-3xl"
+                className="text-xl font-semibold text-[#F3F1E8] sm:text-2xl md:text-3xl"
               >
                 <Link href={`/products/${product.slug}`} className="hover:opacity-80">
                   {product.name}
                 </Link>
               </h2>
-              <p className="text-[#AEA392]">{product.tagline}</p>
+              <p className="text-[#A6B0A0]">{product.tagline}</p>
             </div>
           </div>
 
           {product.liveUrl ? (
             <LiveProjectButton href={product.liveUrl} />
           ) : (
-            <span className="rounded-full border-2 border-[#332A1F] px-6 py-2.5 font-mono text-sm font-medium uppercase tracking-widest text-[#7B7062]">
+            <span className="rounded-full border-2 border-[#2A342A] px-6 py-2.5 font-mono text-sm font-medium uppercase tracking-widest text-[#6E7A6B]">
               {statusLabel[product.status]}
             </span>
           )}
@@ -85,7 +85,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
             {product.metrics.map((m) => (
               <li
                 key={m}
-                className="rounded-full border border-[#332A1F] px-4 py-1.5 font-mono text-sm text-[#F3EEE4]"
+                className="rounded-full border border-[#2A342A] px-4 py-1.5 font-mono text-sm text-[#F3F1E8]"
               >
                 {m}
               </li>
@@ -94,13 +94,13 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
         )}
 
         <ul
-          className="mt-6 flex flex-wrap gap-2 border-t border-[#332A1F] pt-6"
+          className="mt-6 flex flex-wrap gap-2 border-t border-[#2A342A] pt-6"
           aria-label="Technology"
         >
           {product.tech.map((t) => (
             <li
               key={t}
-              className="rounded-full bg-[#241D15] px-3 py-1 font-mono text-xs uppercase tracking-wide text-[#AEA392]"
+              className="rounded-full bg-[#22301F] px-3 py-1 font-mono text-xs uppercase tracking-wide text-[#A6B0A0]"
             >
               {t}
             </li>
@@ -126,7 +126,7 @@ export default function ProductsPage() {
           </h1>
         </FadeIn>
         <FadeIn delay={0.15}>
-          <p className="mx-auto mt-8 max-w-2xl text-center leading-relaxed text-[#AEA392]">
+          <p className="mx-auto mt-8 max-w-2xl text-center leading-relaxed text-[#A6B0A0]">
             Vertical AI products, grouped by the industry they serve — the
             business problem each one kills, and how it works. If one of them
             sounds like your problem, the next one can be yours.
@@ -153,11 +153,11 @@ export default function ProductsPage() {
           ))}
 
           <FadeIn>
-            <div className="flex flex-col items-center gap-6 rounded-[40px] border-2 border-dashed border-[#332A1F] p-10 text-center sm:rounded-[50px] md:rounded-[60px]">
-              <h2 className="text-xl font-semibold text-[#F3EEE4] sm:text-2xl">
+            <div className="flex flex-col items-center gap-6 rounded-[40px] border-2 border-dashed border-[#2A342A] p-10 text-center sm:rounded-[50px] md:rounded-[60px]">
+              <h2 className="text-xl font-semibold text-[#F3F1E8] sm:text-2xl">
                 Your project — this spot is open.
               </h2>
-              <p className="max-w-xl text-[#AEA392]">
+              <p className="max-w-xl text-[#A6B0A0]">
                 Describe the process that eats your team&apos;s hours.
                 I&apos;ll reply within a business day with what an AI system
                 could take off their plate.
