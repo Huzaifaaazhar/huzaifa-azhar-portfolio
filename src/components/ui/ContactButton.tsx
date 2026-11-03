@@ -6,7 +6,7 @@ export function ContactButton({ className }: { className?: string }) {
       href={`mailto:${site.email}`}
       // The primary CTA is where the brand gradient earns a solid fill:
       // sage running into amber, with near-black walnut ink on top.
-      className={`group relative inline-flex items-center justify-center overflow-hidden rounded-full px-8 py-3 font-mono text-xs font-medium tracking-wide text-[#0C110D] sm:px-10 sm:py-3.5 sm:text-sm md:px-12 md:py-4 md:text-base ${className ?? ""}`}
+      className={`group relative inline-flex items-center justify-center overflow-hidden rounded-full px-8 py-3 font-mono text-xs font-medium tracking-wide text-[#FBF7F0] sm:px-10 sm:py-3.5 sm:text-sm md:px-12 md:py-4 md:text-base ${className ?? ""}`}
       style={{ backgroundImage: "var(--grad-brand)" }}
     >
       <span

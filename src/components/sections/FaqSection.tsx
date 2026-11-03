@@ -25,10 +25,10 @@ export function FaqSection() {
                 className="flex flex-col gap-3 py-8"
                 style={{ borderBottom: "1px solid var(--line)" }}
               >
-                <h3 className="text-lg font-medium text-[#F3F1E8] sm:text-xl">
+                <h3 className="text-lg font-medium text-[#2B2219] sm:text-xl">
                   {faq.question}
                 </h3>
-                <p className="leading-relaxed text-[#A6B0A0]">{faq.answer}</p>
+                <p className="leading-relaxed text-[#6B5B4C]">{faq.answer}</p>
               </div>
             </FadeIn>
           ))}

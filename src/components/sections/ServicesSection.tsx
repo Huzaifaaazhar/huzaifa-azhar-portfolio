@@ -56,10 +56,10 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="rounded-t-[40px] border-t border-[#2A342A] bg-[#211A12] px-5 py-20 sm:rounded-t-[50px] sm:px-8 sm:py-24 md:rounded-t-[60px] md:px-10 md:py-32"
+      className="rounded-t-[40px] border-t border-[#3A2C1E] bg-[#2E2318] px-5 py-20 sm:rounded-t-[50px] sm:px-8 sm:py-24 md:rounded-t-[60px] md:px-10 md:py-32"
     >
       <h2
-        className="hero-heading mb-16 ml-auto max-w-[14ch] text-right leading-none sm:mb-20 md:mb-28 lg:mr-[6%]"
+        className="mb-16 ml-auto max-w-[14ch] text-right font-[family-name:var(--font-serif)] leading-none text-[#F7F1E7] sm:mb-20 md:mb-28 lg:mr-[6%]"
         style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
       >
         Services
@@ -67,17 +67,17 @@ export function ServicesSection() {
 
       <div
         className="mx-auto max-w-5xl"
-        style={{ borderTop: "1px solid var(--line)" }}
+        style={{ borderTop: "1px solid rgba(246, 201, 120, 0.18)" }}
       >
         {SERVICES.map((service, i) => (
           <FadeIn key={service.number} delay={i * 0.1}>
             <div
               className="flex items-center gap-6 py-8 sm:py-10 md:py-12"
-              style={{ borderBottom: "1px solid var(--line)" }}
+              style={{ borderBottom: "1px solid rgba(246, 201, 120, 0.18)" }}
             >
               <ScrollFx y={30} className="shrink-0">
                 <span
-                  className="font-black text-[#6E7A6B]"
+                  className="font-black text-[#6B5B4C]"
                   style={{ fontSize: "clamp(3rem, 10vw, 140px)" }}
                 >
                   {service.number}
@@ -85,13 +85,13 @@ export function ServicesSection() {
               </ScrollFx>
               <div className="flex flex-col gap-2">
                 <h3
-                  className="font-semibold text-[#F3F1E8]"
+                  className="font-semibold text-[#F7F1E7]"
                   style={{ fontSize: "clamp(1rem, 2.2vw, 2.1rem)" }}
                 >
                   {service.name}
                 </h3>
                 <p
-                  className="max-w-2xl font-light leading-relaxed text-[#A6B0A0]"
+                  className="max-w-2xl font-light leading-relaxed text-[#C9BCA9]"
                   style={{ fontSize: "clamp(0.85rem, 1.6vw, 1.25rem)" }}
                 >
                   {service.description}

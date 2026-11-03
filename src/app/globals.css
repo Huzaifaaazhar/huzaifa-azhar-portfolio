@@ -6,50 +6,46 @@
 /*  Tweak colors here; everything (Tailwind utilities included) follows. */
 /* ------------------------------------------------------------------ */
 :root {
-  /* Sage is the base: a deep, desaturated green that opens up as the page
-     descends. Walnut is the secondary surface colour, amber the light. */
-  --bg-top: #0c110d;
-  --bg-mid: #111a13;
-  --bg-bottom: #16231a;
+  /* Light, warm base — the cream plaster of the reference. Sage, walnut
+     and amber sit on top of it as materials rather than as a dark wash. */
+  --bg-top: #f7f1e7;
+  --bg-mid: #f2ebdf;
+  --bg-bottom: #ece1d1;
 
-  --bg: #0c110d;
-  --bg-2: #1a231b;
-  --bg-3: #22301f;
+  --bg: #f7f1e7;
+  --bg-2: #fbf7f0;
+  --bg-3: #efe6d8;
 
-  --text: #f3f1e8;
-  --text-dim: #a6b0a0;
-  --text-faint: #6e7a6b;
+  /* Ink is deep walnut, not black. */
+  --text: #2b2219;
+  --text-dim: #6b5b4c;
+  --text-faint: #9a8a79;
 
-  --surface: #1a231b;
-  --surface-walnut: #211a12;
-  --line: #2a342a;
+  --surface: #fbf7f0;
+  --surface-sage: #dde4d2;
+  --surface-walnut: #2e2318;
+  --line: #ded2c0;
 
   --sage: #9caf88;
-  --sage-soft: #bfcdaf;
+  --sage-deep: #7a8f64;
   --walnut: #6b4f3a;
   --walnut-soft: #8a6a4f;
   --amber: #e8a33d;
+  --amber-deep: #b5751a;
   --amber-soft: #f6c978;
 
-  /* With sage holding the background, amber carries links and highlights
-     so they still separate from the page. */
-  --accent: var(--amber);
-  --accent-soft: var(--amber-soft);
+  /* On cream, amber needs deepening to hold contrast as a link colour. */
+  --accent: var(--amber-deep);
+  --accent-soft: var(--amber);
   --accent-warm: var(--amber);
-  --glow: #243520;
+  --glow: #e6c89a;
 
   --grad-brand: linear-gradient(
     105deg,
-    var(--walnut-soft) 0%,
-    var(--amber) 52%,
-    var(--amber-soft) 100%
+    var(--walnut) 0%,
+    var(--amber-deep) 55%,
+    var(--amber) 100%
   );
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
 }
 
 html {
@@ -82,26 +78,26 @@ body {
   z-index: 0;
   background:
     radial-gradient(
-      58% 42% at 12% 6%,
-      color-mix(in srgb, var(--sage) 34%, transparent) 0%,
+      54% 40% at 86% 8%,
+      color-mix(in srgb, var(--amber) 42%, transparent) 0%,
       transparent 60%
     ),
     radial-gradient(
-      52% 38% at 88% 14%,
-      color-mix(in srgb, var(--amber) 20%, transparent) 0%,
-      transparent 54%
-    ),
-    radial-gradient(
-      70% 48% at 62% 40%,
-      color-mix(in srgb, var(--walnut) 30%, transparent) 0%,
-      transparent 66%
-    ),
-    radial-gradient(
-      46% 34% at 24% 62%,
-      color-mix(in srgb, var(--sage) 22%, transparent) 0%,
+      48% 36% at 96% 30%,
+      color-mix(in srgb, var(--walnut) 20%, transparent) 0%,
       transparent 62%
+    ),
+    radial-gradient(
+      56% 42% at 8% 58%,
+      color-mix(in srgb, var(--sage) 34%, transparent) 0%,
+      transparent 64%
+    ),
+    radial-gradient(
+      60% 44% at 46% 22%,
+      color-mix(in srgb, var(--amber-soft) 24%, transparent) 0%,
+      transparent 66%
     );
-  filter: blur(14px);
+  filter: blur(12px);
 }
 
 /* A second, slower field further down so the page never flattens out into
@@ -114,21 +110,21 @@ body {
   z-index: 0;
   background:
     radial-gradient(
-      60% 40% at 82% 24%,
-      color-mix(in srgb, var(--amber) 16%, transparent) 0%,
-      transparent 62%
-    ),
-    radial-gradient(
-      56% 40% at 16% 66%,
-      color-mix(in srgb, var(--sage) 24%, transparent) 0%,
+      56% 40% at 88% 20%,
+      color-mix(in srgb, var(--amber) 22%, transparent) 0%,
       transparent 64%
     ),
     radial-gradient(
-      64% 44% at 50% 92%,
-      color-mix(in srgb, var(--walnut) 26%, transparent) 0%,
+      52% 38% at 10% 62%,
+      color-mix(in srgb, var(--sage) 30%, transparent) 0%,
+      transparent 64%
+    ),
+    radial-gradient(
+      62% 42% at 52% 94%,
+      color-mix(in srgb, var(--walnut) 16%, transparent) 0%,
       transparent 68%
     );
-  filter: blur(16px);
+  filter: blur(14px);
 }
 
 /* Fine grain over everything. Breaks up the large colour fields so the
@@ -138,14 +134,14 @@ body {
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  opacity: 0.4;
-  mix-blend-mode: overlay;
+  opacity: 0.22;
+  mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
 }
 
 @media (prefers-reduced-motion: reduce) {
   .page-grain {
-    opacity: 0.25;
+    opacity: 0.14;
   }
 }
 

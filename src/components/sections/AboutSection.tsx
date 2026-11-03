@@ -15,7 +15,7 @@ export function AboutSection() {
       id="about"
       className="relative flex min-h-screen flex-col justify-center px-5 py-20 sm:px-8 md:px-10"
     >
-      <FadeIn delay={0.1} x={-80} y={0} duration={0.9}>
+      <FadeIn delay={0.1} x={-80} y={0} duration={0.9} className="hidden w-0 xl:block">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`${DECOR_BASE}/moon_icon.11395d36.png`}
@@ -24,7 +24,7 @@ export function AboutSection() {
           className="absolute left-[3%] top-[6%] hidden max-h-[200px] w-[180px] object-contain xl:block 2xl:w-[210px]"
         />
       </FadeIn>
-      <FadeIn delay={0.25} x={-80} y={0} duration={0.9}>
+      <FadeIn delay={0.25} x={-80} y={0} duration={0.9} className="hidden w-0 xl:block">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`${DECOR_BASE}/p59_1.4659672e.png`}
@@ -33,7 +33,7 @@ export function AboutSection() {
           className="absolute bottom-[10%] left-[5%] hidden max-h-[170px] w-[150px] object-contain xl:block 2xl:w-[180px]"
         />
       </FadeIn>
-      <FadeIn delay={0.15} x={80} y={0} duration={0.9}>
+      <FadeIn delay={0.15} x={80} y={0} duration={0.9} className="hidden w-0 xl:block">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`${DECOR_BASE}/lego_icon-1.703bb594.png`}
@@ -42,7 +42,7 @@ export function AboutSection() {
           className="absolute right-[3%] top-[6%] hidden max-h-[200px] w-[180px] object-contain xl:block 2xl:w-[210px]"
         />
       </FadeIn>
-      <FadeIn delay={0.3} x={80} y={0} duration={0.9}>
+      <FadeIn delay={0.3} x={80} y={0} duration={0.9} className="hidden w-0 xl:block">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`${DECOR_BASE}/Group_134-1.2e04f3ce.png`}
@@ -71,7 +71,7 @@ export function AboutSection() {
         <div className="flex flex-col items-start gap-10 lg:col-span-6 lg:col-start-7 lg:pt-28">
           <AnimatedText
             text={PARAGRAPH}
-            className="max-w-[560px] font-medium leading-relaxed text-[#F3F1E8] text-[clamp(1rem,2vw,1.35rem)]"
+            className="max-w-[560px] font-medium leading-relaxed text-[#2B2219] text-[clamp(1rem,2vw,1.35rem)]"
           />
           <ContactButton />
         </div>

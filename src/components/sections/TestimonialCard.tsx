@@ -30,7 +30,7 @@ export function TestimonialCard({
     >
       <motion.div
         style={{ scale }}
-        className="flex h-full flex-col justify-between rounded-[40px] border border-[#2A342A] bg-[#1A231B] p-8 sm:rounded-[50px] sm:p-12 md:rounded-[60px] md:p-16"
+        className="flex h-full flex-col justify-between rounded-[40px] border border-[#DED2C0] bg-[#FBF7F0] p-8 sm:rounded-[50px] sm:p-12 md:rounded-[60px] md:p-16"
       >
         <span
           className="hero-heading leading-none"
@@ -39,16 +39,16 @@ export function TestimonialCard({
           &ldquo;
         </span>
         <p
-          className="font-[family-name:var(--font-serif)] leading-snug text-[#F3F1E8]"
+          className="font-[family-name:var(--font-serif)] leading-snug text-[#2B2219]"
           style={{ fontSize: "clamp(1.1rem, 2.5vw, 2rem)" }}
         >
           {testimonial.quote}
         </p>
         <div className="mt-8 flex flex-col gap-1">
-          <span className="text-lg font-medium text-[#F3F1E8]">
+          <span className="text-lg font-medium text-[#2B2219]">
             {testimonial.author}
           </span>
-          <span className="text-sm text-[#A6B0A0]">
+          <span className="text-sm text-[#6B5B4C]">
             {testimonial.role}, {testimonial.company}
           </span>
         </div>
