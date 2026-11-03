@@ -17,7 +17,7 @@ export function CertificationsSection() {
             >
               Certifications
             </h2>
-            <span className="font-mono text-sm text-[#56657F]">
+            <span className="font-mono text-sm text-[#7B7062]">
               {certifications.length} certificates
             </span>
           </div>
@@ -29,7 +29,7 @@ export function CertificationsSection() {
               <ScrollFx rotateX={7} z={90} scale={0.965} perspective={1100} enterOnly>
               <div className="flex flex-col gap-5">
                 <div
-                  className={`overflow-hidden rounded-2xl border border-[#1E2941] bg-[#111726] ${
+                  className={`overflow-hidden rounded-2xl border border-[#332A1F] bg-[#1D1811] ${
                     cert.kind === "badge" ? "flex justify-center px-6 py-10" : ""
                   }`}
                 >
@@ -44,12 +44,12 @@ export function CertificationsSection() {
                 </div>
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <div className="flex flex-col gap-1">
-                    <h3 className="text-lg font-medium text-[#EAF0FA] sm:text-xl">
+                    <h3 className="text-lg font-medium text-[#F3EEE4] sm:text-xl">
                       {cert.title}
                     </h3>
-                    <p className="text-sm text-[#8A99B8]">{cert.issuer}</p>
+                    <p className="text-sm text-[#AEA392]">{cert.issuer}</p>
                   </div>
-                  <span className="font-mono text-xs text-[#56657F]">
+                  <span className="font-mono text-xs text-[#7B7062]">
                     {cert.date}
                   </span>
                 </div>

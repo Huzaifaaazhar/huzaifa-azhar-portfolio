@@ -35,14 +35,14 @@ export default async function BlogPage() {
         </h1>
       </FadeIn>
       <FadeIn delay={0.15}>
-        <p className="mx-auto mt-8 max-w-xl text-center leading-relaxed text-[#8A99B8]">
+        <p className="mx-auto mt-8 max-w-xl text-center leading-relaxed text-[#AEA392]">
           Notes on AI systems, automation, and shipping for small businesses —
           published on{" "}
           <a
             href={site.socials.medium}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#EAF0FA] underline underline-offset-4"
+            className="text-[#F3EEE4] underline underline-offset-4"
           >
             Medium
           </a>
@@ -52,13 +52,13 @@ export default async function BlogPage() {
 
       {posts.length === 0 ? (
         <FadeIn delay={0.3}>
-          <p className="mt-16 text-center text-[#8A99B8]">
+          <p className="mt-16 text-center text-[#AEA392]">
             Couldn&apos;t load articles right now — read them directly on{" "}
             <a
               href={site.socials.medium}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#EAF0FA] underline underline-offset-4"
+              className="text-[#F3EEE4] underline underline-offset-4"
             >
               Medium
             </a>
@@ -73,7 +73,7 @@ export default async function BlogPage() {
                 href={post.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex h-full flex-col overflow-hidden rounded-[30px] border-2 border-[#1E2941] transition-colors hover:border-[#1E2941]"
+                className="group flex h-full flex-col overflow-hidden rounded-[30px] border-2 border-[#332A1F] transition-colors hover:border-[#332A1F]"
               >
                 {post.image && (
                   // eslint-disable-next-line @next/next/no-img-element
@@ -85,16 +85,16 @@ export default async function BlogPage() {
                   />
                 )}
                 <div className="flex flex-1 flex-col gap-3 p-6">
-                  <p className="font-mono text-xs text-[#56657F]">
+                  <p className="font-mono text-xs text-[#7B7062]">
                     {formatDate(post.pubDate)}
                   </p>
-                  <h2 className="text-lg font-medium text-[#EAF0FA] group-hover:opacity-80">
+                  <h2 className="text-lg font-medium text-[#F3EEE4] group-hover:opacity-80">
                     {post.title}
                   </h2>
-                  <p className="text-sm leading-relaxed text-[#8A99B8]">
+                  <p className="text-sm leading-relaxed text-[#AEA392]">
                     {post.excerpt}
                   </p>
-                  <span className="mt-auto pt-2 font-mono text-sm text-[#EAF0FA]">
+                  <span className="mt-auto pt-2 font-mono text-sm text-[#F3EEE4]">
                     Read on Medium ↗
                   </span>
                 </div>

@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Playfair_Display, JetBrains_Mono, Alex_Brush } from "next/font/google";
+import { Inter } from "next/font/google";
+import { Playfair_Display } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
+import { Alex_Brush } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { PersonJsonLd } from "@/components/JsonLd";
@@ -70,7 +73,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#06080E",
+  themeColor: "#100D0A",
   colorScheme: "dark",
 };
 
@@ -96,6 +99,8 @@ export default function RootLayout({
       >
         <SmoothScroll />
         <div className="page-glow" aria-hidden="true" />
+        <div className="page-mesh-low" aria-hidden="true" />
+        <div className="page-grain" aria-hidden="true" />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded focus:bg-bg-2 focus:px-4 focus:py-2"

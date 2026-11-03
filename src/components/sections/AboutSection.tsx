@@ -13,7 +13,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative flex min-h-screen flex-col items-center justify-center px-5 py-20 sm:px-8 md:px-10"
+      className="relative flex min-h-screen flex-col justify-center px-5 py-20 sm:px-8 md:px-10"
     >
       <FadeIn delay={0.1} x={-80} y={0} duration={0.9}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -52,26 +52,29 @@ export function AboutSection() {
         />
       </FadeIn>
 
-      <div className="flex flex-col items-center gap-16 sm:gap-20 md:gap-24">
-        <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16">
+      <div className="mx-auto grid w-full max-w-[1400px] items-start gap-12 lg:grid-cols-12 lg:gap-10">
+        <div className="lg:col-span-5 lg:col-start-1 lg:pt-10">
           <FadeIn delay={0} y={40}>
             <ScrollFx y={24}>
-            <h2
-              className="hero-heading text-center leading-none tracking-tight"
-              style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}
-            >
-              About me
-            </h2>
+              <h2
+                className="hero-heading leading-none tracking-tight"
+                style={{ fontSize: "clamp(3rem, 9vw, 130px)" }}
+              >
+                About me
+              </h2>
             </ScrollFx>
           </FadeIn>
-
-          <AnimatedText
-            text={PARAGRAPH}
-            className="max-w-[560px] text-center font-medium leading-relaxed text-[#EAF0FA] text-[clamp(1rem,2vw,1.35rem)]"
-          />
         </div>
 
-        <ContactButton />
+        {/* Offset down and across from the heading rather than stacked
+            under it, so the section reads as a spread. */}
+        <div className="flex flex-col items-start gap-10 lg:col-span-6 lg:col-start-7 lg:pt-28">
+          <AnimatedText
+            text={PARAGRAPH}
+            className="max-w-[560px] font-medium leading-relaxed text-[#F3EEE4] text-[clamp(1rem,2vw,1.35rem)]"
+          />
+          <ContactButton />
+        </div>
       </div>
     </section>
   );

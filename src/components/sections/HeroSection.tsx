@@ -15,7 +15,7 @@ export function HeroSection() {
         <ScrollFx y={34} className="w-full">
           <div className="flex max-w-[52ch] flex-col items-start gap-6">
             <FadeIn delay={0.1} y={20}>
-              <p className="font-mono text-xs tracking-[0.2em] text-[#2D7FFF] sm:text-sm">
+              <p className="font-mono text-xs tracking-[0.2em] text-[#9CAF88] sm:text-sm">
                 {site.role}
               </p>
             </FadeIn>
@@ -25,7 +25,7 @@ export function HeroSection() {
             </FadeIn>
 
             <FadeIn delay={0.28} y={20}>
-              <p className="max-w-[46ch] text-[clamp(1rem,1.3vw,1.2rem)] leading-relaxed text-[#8A99B8]">
+              <p className="max-w-[46ch] text-[clamp(1rem,1.3vw,1.2rem)] leading-relaxed text-[#AEA392]">
                 {site.headline} I design and ship vertical AI products —
                 strategy through deployment — across logistics, healthcare,
                 fintech and security.

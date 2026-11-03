@@ -5,10 +5,10 @@ import { FaqJsonLd } from "@/components/JsonLd";
 export function FaqSection() {
   return (
     <section id="faq" className="px-5 py-20 sm:px-8 md:px-10">
-      <div className="mx-auto max-w-3xl">
-        <FadeIn>
+      <div className="mx-auto grid max-w-[1400px] gap-10 lg:grid-cols-12">
+        <FadeIn className="lg:col-span-3 lg:col-start-1">
           <h2
-            className="hero-heading text-center leading-none tracking-tight"
+            className="hero-heading leading-none tracking-tight lg:sticky lg:top-24"
             style={{ fontSize: "clamp(2.5rem, 9vw, 100px)" }}
           >
             FAQ
@@ -16,19 +16,19 @@ export function FaqSection() {
         </FadeIn>
 
         <div
-          className="mt-16"
-          style={{ borderTop: "1px solid rgba(215, 226, 234, 0.15)" }}
+          className="lg:col-span-8 lg:col-start-5"
+          style={{ borderTop: "1px solid var(--line)" }}
         >
           {faqs.map((faq, i) => (
             <FadeIn key={faq.question} delay={i * 0.1}>
               <div
                 className="flex flex-col gap-3 py-8"
-                style={{ borderBottom: "1px solid rgba(215, 226, 234, 0.15)" }}
+                style={{ borderBottom: "1px solid var(--line)" }}
               >
-                <h3 className="text-lg font-medium text-[#EAF0FA] sm:text-xl">
+                <h3 className="text-lg font-medium text-[#F3EEE4] sm:text-xl">
                   {faq.question}
                 </h3>
-                <p className="leading-relaxed text-[#8A99B8]">{faq.answer}</p>
+                <p className="leading-relaxed text-[#AEA392]">{faq.answer}</p>
               </div>
             </FadeIn>
           ))}

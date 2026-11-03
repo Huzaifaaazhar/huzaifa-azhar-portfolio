@@ -6,61 +6,45 @@
 /*  Tweak colors here; everything (Tailwind utilities included) follows. */
 /* ------------------------------------------------------------------ */
 :root {
-  /* Midnight black base, cooled toward blue as the page descends, with an
-     electric-blue bloom at the very top. */
-  --bg-top: #06080e;
-  --bg-mid: #0a0e1a;
-  --bg-bottom: #0d1324;
-  --glow: #16306b;
+  /* Warm, organic base: walnut pushed almost to black at the top and
+     opening up as the page descends. */
+  --bg-top: #100d0a;
+  --bg-mid: #16120d;
+  --bg-bottom: #1c1710;
 
-  /* Flat fallback wherever one solid colour is needed (theme-color, OG
-     image, an opaque surface). */
-  --bg: #06080e;
-  --bg-2: #111726;
-  --bg-3: #16203a;
+  --bg: #100d0a;
+  --bg-2: #1d1811;
+  --bg-3: #241d15;
 
-  --text: #eaf0fa;
-  --text-dim: #8a99b8;
-  --text-faint: #56657f;
+  --text: #f3eee4;
+  --text-dim: #aea392;
+  --text-faint: #7b7062;
 
-  --surface: #111726;
-  --line: #1e2941;
+  --surface: #1d1811;
+  --surface-2: #241d15;
+  --line: #332a1f;
 
-  /* Electric blue leads; cantaloupe orange is the warm counterpoint. Both
-     stay on small, high-signal elements and gradient ends — never large
-     flat fills, which is what keeps them vivid rather than garish. */
-  --accent: #2d7fff;
-  --accent-soft: #7fb0ff;
-  --accent-warm: #ff9a5c;
+  /* Hierarchy: sage leads, walnut carries the structure, amber is the
+     light source — used sparingly so it still reads as a glow. */
+  --sage: #9caf88;
+  --sage-soft: #bfcdaf;
+  --walnut: #6b4f3a;
+  --walnut-soft: #8a6a4f;
+  --amber: #e8a33d;
+  --amber-soft: #f6c978;
 
-  /* The brand gradient: cool to warm across the two accents. */
+  /* Kept so existing utilities keep resolving. */
+  --accent: var(--sage);
+  --accent-soft: var(--sage-soft);
+  --accent-warm: var(--amber);
+  --glow: #3a2d1e;
+
   --grad-brand: linear-gradient(
     105deg,
-    var(--accent) 0%,
-    var(--accent-soft) 46%,
-    var(--accent-warm) 100%
+    var(--sage) 0%,
+    var(--sage-soft) 38%,
+    var(--amber) 100%
   );
-}
-
-/* Map tokens into Tailwind v4 theme so `bg-bg`, `text-ink`,
-   `text-aurora-green`, `border-line`, `font-display` etc. work. */
-@theme inline {
-  --color-bg: var(--bg);
-  --color-bg-2: var(--bg-2);
-  --color-bg-3: var(--bg-3);
-  --color-accent: var(--accent);
-  --color-accent-warm: var(--accent-warm);
-  --color-surface: var(--surface);
-  --color-ink: var(--text);
-  --color-ink-dim: var(--text-dim);
-  --color-ink-faint: var(--text-faint);
-  --color-line: var(--line);
-
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-playfair), Georgia, serif;
-  --font-serif: var(--font-playfair), Georgia, serif;
-  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
-  --font-script: var(--font-alexbrush), cursive;
 }
 
 * {
@@ -91,20 +75,83 @@ body {
   );
 }
 
-/* Radial bloom, anchored to the top of the document so it bleeds down
-   from the hero and nowhere else. */
+/* Mesh gradient: several wide, soft colour fields overlapping at
+   different positions. Layered rather than a single radial, which is what
+   makes it read as light in a room instead of a flat vignette. Anchored to
+   the top of the document and tall enough to carry the first screens. */
 .page-glow {
   position: absolute;
   inset: 0 0 auto 0;
-  height: min(1100px, 130vh);
+  height: min(2200px, 240vh);
   pointer-events: none;
   z-index: 0;
-  background: radial-gradient(
-    120% 70% at 50% -8%,
-    var(--glow) 0%,
-    color-mix(in srgb, var(--glow) 45%, transparent) 20%,
-    transparent 46%
-  );
+  background:
+    radial-gradient(
+      58% 42% at 12% 6%,
+      color-mix(in srgb, var(--sage) 30%, transparent) 0%,
+      transparent 58%
+    ),
+    radial-gradient(
+      52% 38% at 88% 14%,
+      color-mix(in srgb, var(--amber) 26%, transparent) 0%,
+      transparent 56%
+    ),
+    radial-gradient(
+      70% 48% at 62% 40%,
+      color-mix(in srgb, var(--walnut) 20%, transparent) 0%,
+      transparent 64%
+    ),
+    radial-gradient(
+      46% 34% at 24% 62%,
+      color-mix(in srgb, var(--sage) 16%, transparent) 0%,
+      transparent 62%
+    );
+  filter: blur(14px);
+}
+
+/* A second, slower field further down so the page never flattens out into
+   plain background once the hero mesh has faded. */
+.page-mesh-low {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: min(1800px, 190vh);
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(
+      60% 40% at 82% 24%,
+      color-mix(in srgb, var(--amber) 16%, transparent) 0%,
+      transparent 62%
+    ),
+    radial-gradient(
+      56% 40% at 16% 66%,
+      color-mix(in srgb, var(--sage) 18%, transparent) 0%,
+      transparent 64%
+    ),
+    radial-gradient(
+      64% 44% at 50% 92%,
+      color-mix(in srgb, var(--walnut) 18%, transparent) 0%,
+      transparent 68%
+    );
+  filter: blur(16px);
+}
+
+/* Fine grain over everything. Breaks up the large colour fields so the
+   gradients read as a surface with texture rather than flat CSS. */
+.page-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.4;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-grain {
+    opacity: 0.25;
+  }
 }
 
 ::selection {

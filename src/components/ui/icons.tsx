@@ -40,7 +40,7 @@ export function KaggleIcon({ className }: { className?: string }) {
         textAnchor="middle"
         fontSize="12"
         fontWeight="700"
-        fill="#06080E"
+        fill="#100D0A"
         fontFamily="sans-serif"
       >
         K

@@ -12,9 +12,9 @@ const LINKS = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-[#1E2941] px-5 py-10 sm:px-8 md:px-10">
+    <footer className="border-t border-[#332A1F] px-5 py-10 sm:px-8 md:px-10">
       <div className="mx-auto flex max-w-6xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-        <p className="font-mono text-sm text-[#56657F]">
+        <p className="font-mono text-sm text-[#7B7062]">
           © {new Date().getFullYear()} {site.name} · {site.location}
         </p>
         <ul className="flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -23,7 +23,7 @@ export function SiteFooter() {
               <a
                 href={href}
                 {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="flex items-center gap-2 font-mono text-sm text-[#8A99B8] transition-colors hover:text-[#2D7FFF]"
+                className="flex items-center gap-2 font-mono text-sm text-[#AEA392] transition-colors hover:text-[#9CAF88]"
               >
                 <Icon className="h-[18px] w-[18px]" />
                 {label}
